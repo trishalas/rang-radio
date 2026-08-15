@@ -1,7 +1,6 @@
-/* =========================================================
+/* ==========================================================
    RANG RADIO
-   MUSIC PLAYER + LIVE AUDIO VISUALIZER
-========================================================= */
+========================================================== */
 
 
 const audio =
@@ -10,25 +9,342 @@ const audio =
 const playButton =
     document.getElementById("playButton");
 
-const heroPlayIcon =
-    document.getElementById("heroPlayIcon");
-
 const songTitle =
     document.getElementById("songTitle");
 
 const songArtist =
     document.getElementById("songArtist");
 
-const canvas =
+const visualizer =
     document.getElementById("visualizer");
 
 const ctx =
-    canvas.getContext("2d");
+    visualizer.getContext("2d");
 
 
-/* =========================================================
-   AUDIO ANALYSER
-========================================================= */
+/* ==========================================================
+   SONG LIBRARY
+========================================================== */
+
+const playlists = {
+
+    romantic: [
+
+        {
+            title: "Tum Hi Ho",
+            artist: "Romantic • Rang Radio",
+            file: "audio/romantic-1.mp3"
+        },
+
+        {
+            title: "Pehla Nasha",
+            artist: "Romantic • Rang Radio",
+            file: "audio/romantic-2.mp3"
+        },
+
+        {
+            title: "Aankhon Se Tune",
+            artist: "Romantic • Rang Radio",
+            file: "audio/romantic-3.mp3"
+        }
+
+    ],
+
+
+    safar: [
+
+        {
+            title: "Yeh Haseen Wadiyan",
+            artist: "Safar • Rang Radio",
+            file: "audio/safar-1.mp3"
+        },
+
+        {
+            title: "Ilahi",
+            artist: "Safar • Rang Radio",
+            file: "audio/safar-2.mp3"
+        },
+
+        {
+            title: "Safarnama",
+            artist: "Safar • Rang Radio",
+            file: "audio/safar-3.mp3"
+        }
+
+    ],
+
+
+    bhagwanji: [
+
+        {
+            title: "Om Namah Shivaya",
+            artist: "Bhakti • Rang Radio",
+            file: "audio/bhakti-1.mp3"
+        },
+
+        {
+            title: "Achyutam Keshavam",
+            artist: "Bhakti • Rang Radio",
+            file: "audio/bhakti-2.mp3"
+        },
+
+        {
+            title: "Shree Ram Jai Ram",
+            artist: "Bhakti • Rang Radio",
+            file: "audio/bhakti-3.mp3"
+        }
+
+    ]
+
+};
+
+
+/* ==========================================================
+   CURRENT STATE
+========================================================== */
+
+let currentTheme =
+    "romantic";
+
+let currentSong =
+    0;
+
+
+/* ==========================================================
+   CHANGE THEME
+========================================================== */
+
+const themeButtons =
+    document.querySelectorAll(".theme-link");
+
+const themes =
+    document.querySelectorAll(".theme");
+
+
+themeButtons.forEach(button => {
+
+    button.addEventListener(
+        "click",
+        () => {
+
+            const selectedTheme =
+                button.dataset.theme;
+
+
+            changeTheme(
+                selectedTheme
+            );
+
+        }
+    );
+
+});
+
+
+function changeTheme(theme) {
+
+    currentTheme =
+        theme;
+
+    currentSong =
+        0;
+
+
+    /* Navigation */
+
+    themeButtons.forEach(button => {
+
+        button.classList.toggle(
+            "active",
+            button.dataset.theme === theme
+        );
+
+    });
+
+
+    /* Main theme */
+
+    themes.forEach(section => {
+
+        section.classList.toggle(
+            "active",
+            section.dataset.themeSection === theme
+        );
+
+    });
+
+
+    /* Load first song */
+
+    loadSong(
+        currentSong
+    );
+
+}
+
+
+/* ==========================================================
+   LOAD SONG
+========================================================== */
+
+function loadSong(index) {
+
+    const playlist =
+        playlists[currentTheme];
+
+    const song =
+        playlist[index];
+
+
+    songTitle.textContent =
+        song.title;
+
+
+    songArtist.textContent =
+        song.artist;
+
+
+    audio.src =
+        song.file;
+
+
+    audio.load();
+
+}
+
+
+/* ==========================================================
+   PLAY / PAUSE
+========================================================== */
+
+async function toggleMusic() {
+
+    try {
+
+        if (audio.paused) {
+
+            await audio.play();
+
+            playButton.textContent =
+                "❚❚";
+
+        }
+
+        else {
+
+            audio.pause();
+
+            playButton.textContent =
+                "▶";
+
+        }
+
+    }
+
+    catch(error) {
+
+        console.log(
+            "Please add your MP3 files to the audio folder."
+        );
+
+    }
+
+}
+
+
+/* ==========================================================
+   NEXT SONG
+========================================================== */
+
+function nextSong() {
+
+    const playlist =
+        playlists[currentTheme];
+
+
+    currentSong++;
+
+    if (
+        currentSong >=
+        playlist.length
+    ) {
+
+        currentSong = 0;
+
+    }
+
+
+    loadSong(
+        currentSong
+    );
+
+
+    audio.play()
+        .then(() => {
+
+            playButton.textContent =
+                "❚❚";
+
+        })
+        .catch(() => {});
+
+}
+
+
+/* ==========================================================
+   PREVIOUS SONG
+========================================================== */
+
+function previousSong() {
+
+    const playlist =
+        playlists[currentTheme];
+
+
+    currentSong--;
+
+    if (currentSong < 0) {
+
+        currentSong =
+            playlist.length - 1;
+
+    }
+
+
+    loadSong(
+        currentSong
+    );
+
+
+    audio.play()
+        .then(() => {
+
+            playButton.textContent =
+                "❚❚";
+
+        })
+        .catch(() => {});
+
+}
+
+
+/* ==========================================================
+   AUTOMATICALLY PLAY NEXT SONG
+========================================================== */
+
+audio.addEventListener(
+    "ended",
+    () => {
+
+        nextSong();
+
+    }
+);
+
+
+/* ==========================================================
+   AUDIO VISUALIZER
+========================================================== */
 
 let audioContext;
 
@@ -38,16 +354,10 @@ let source;
 
 let dataArray;
 
-let isAudioSetup = false;
 
+function setupVisualizer() {
 
-/* =========================================================
-   SETUP AUDIO
-========================================================= */
-
-function setupAudio() {
-
-    if (isAudioSetup) {
+    if (audioContext) {
         return;
     }
 
@@ -63,29 +373,31 @@ function setupAudio() {
         audioContext.createAnalyser();
 
 
-    analyser.fftSize = 256;
-
-
-    const bufferLength =
-        analyser.frequencyBinCount;
+    analyser.fftSize =
+        128;
 
 
     dataArray =
-        new Uint8Array(bufferLength);
+        new Uint8Array(
+            analyser.frequencyBinCount
+        );
 
 
     source =
-        audioContext.createMediaElementSource(audio);
+        audioContext
+        .createMediaElementSource(
+            audio
+        );
 
 
-    source.connect(analyser);
+    source.connect(
+        analyser
+    );
+
 
     analyser.connect(
         audioContext.destination
     );
-
-
-    isAudioSetup = true;
 
 
     drawVisualizer();
@@ -93,104 +405,28 @@ function setupAudio() {
 }
 
 
-/* =========================================================
-   PLAY / PAUSE
-========================================================= */
-
-async function toggleMusic() {
-
-    setupAudio();
-
-
-    if (audioContext.state === "suspended") {
-
-        await audioContext.resume();
-
-    }
-
-
-    if (audio.paused) {
-
-        try {
-
-            await audio.play();
-
-            updatePlayingState(true);
-
-        }
-
-        catch (error) {
-
-            console.log(
-                "Audio could not start:",
-                error
-            );
-
-        }
-
-    }
-
-    else {
-
-        audio.pause();
-
-        updatePlayingState(false);
-
-    }
-
-}
-
-
-/* =========================================================
-   UPDATE UI
-========================================================= */
-
-function updatePlayingState(isPlaying) {
-
-    if (isPlaying) {
-
-        playButton.innerHTML = "❚❚";
-
-        heroPlayIcon.innerHTML = "❚❚";
-
-    }
-
-    else {
-
-        playButton.innerHTML = "▶";
-
-        heroPlayIcon.innerHTML = "▶";
-
-    }
-
-}
-
-
-/* =========================================================
-   AUDIO EVENTS
-========================================================= */
-
 audio.addEventListener(
     "play",
-    () => updatePlayingState(true)
+    () => {
+
+        setupVisualizer();
+
+        if (
+            audioContext.state ===
+            "suspended"
+        ) {
+
+            audioContext.resume();
+
+        }
+
+    }
 );
 
 
-audio.addEventListener(
-    "pause",
-    () => updatePlayingState(false)
-);
-
-
-audio.addEventListener(
-    "ended",
-    () => updatePlayingState(false)
-);
-
-
-/* =========================================================
-   LIVE VISUALIZER
-========================================================= */
+/* ==========================================================
+   DRAW VISUALIZER
+========================================================== */
 
 function drawVisualizer() {
 
@@ -214,20 +450,20 @@ function drawVisualizer() {
 
 
     const width =
-        canvas.clientWidth;
+        visualizer.clientWidth;
 
     const height =
-        canvas.clientHeight;
+        visualizer.clientHeight;
 
 
     const dpr =
         window.devicePixelRatio || 1;
 
 
-    canvas.width =
+    visualizer.width =
         width * dpr;
 
-    canvas.height =
+    visualizer.height =
         height * dpr;
 
 
@@ -249,7 +485,7 @@ function drawVisualizer() {
     );
 
 
-    const bars = 40;
+    const bars = 35;
 
     const barWidth =
         width / bars;
@@ -261,7 +497,7 @@ function drawVisualizer() {
         i++
     ) {
 
-        const dataIndex =
+        const index =
             Math.floor(
                 i *
                 dataArray.length /
@@ -270,13 +506,14 @@ function drawVisualizer() {
 
 
         const value =
-            dataArray[dataIndex];
+            dataArray[index];
 
 
         const barHeight =
             Math.max(
-                4,
-                (value / 255) *
+                3,
+                value /
+                255 *
                 height
             );
 
@@ -286,10 +523,9 @@ function drawVisualizer() {
 
 
         const y =
-            height - barHeight;
+            height -
+            barHeight;
 
-
-        /* Gradient */
 
         const gradient =
             ctx.createLinearGradient(
@@ -302,19 +538,19 @@ function drawVisualizer() {
 
         gradient.addColorStop(
             0,
-            "#ffb62e"
+            "#ff4f83"
         );
 
 
         gradient.addColorStop(
             .5,
-            "#ff557c"
+            "#ff9f35"
         );
 
 
         gradient.addColorStop(
             1,
-            "#d66cff"
+            "#7a61ff"
         );
 
 
@@ -330,7 +566,7 @@ function drawVisualizer() {
             y,
             barWidth - 4,
             barHeight,
-            4
+            5
         );
 
 
@@ -338,112 +574,25 @@ function drawVisualizer() {
 
     }
 
-
-    /* Draw flowing line */
-
-    drawWave(
-        dataArray,
-        width,
-        height
-    );
-
 }
 
 
-/* =========================================================
-   FLOWING WAVE
-========================================================= */
-
-function drawWave(
-    data,
-    width,
-    height
-) {
-
-    ctx.beginPath();
-
-
-    const points = 80;
-
-
-    for (
-        let i = 0;
-        i < points;
-        i++
-    ) {
-
-        const index =
-            Math.floor(
-                i *
-                data.length /
-                points
-            );
-
-
-        const amplitude =
-            data[index] / 255;
-
-
-        const x =
-            (i / (points - 1)) *
-            width;
-
-
-        const center =
-            height * .55;
-
-
-        const y =
-            center -
-            amplitude *
-            height *
-            .45;
-
-
-        if (i === 0) {
-
-            ctx.moveTo(
-                x,
-                y
-            );
-
-        }
-
-        else {
-
-            ctx.lineTo(
-                x,
-                y
-            );
-
-        }
-
-    }
-
-
-    ctx.strokeStyle =
-        "rgba(255,255,255,.8)";
-
-
-    ctx.lineWidth = 1.5;
-
-
-    ctx.stroke();
-
-}
-
-
-/* =========================================================
-   IDLE VISUALIZER
-========================================================= */
+/* ==========================================================
+   IDLE ANIMATION
+========================================================== */
 
 function drawIdleVisualizer() {
 
+    if (!visualizer) {
+        return;
+    }
+
+
     const width =
-        canvas.clientWidth;
+        visualizer.clientWidth;
 
     const height =
-        canvas.clientHeight;
+        visualizer.clientHeight;
 
 
     ctx.clearRect(
@@ -454,14 +603,14 @@ function drawIdleVisualizer() {
     );
 
 
-    const bars = 40;
+    const time =
+        Date.now() / 350;
+
+
+    const bars = 35;
 
     const barWidth =
         width / bars;
-
-
-    const time =
-        Date.now() / 400;
 
 
     for (
@@ -470,15 +619,18 @@ function drawIdleVisualizer() {
         i++
     ) {
 
-        const wave =
+        const movement =
             Math.sin(
-                time + i * .35
+                time +
+                i * .35
             );
 
 
         const barHeight =
-            10 +
-            Math.abs(wave) * 20;
+            5 +
+            Math.abs(
+                movement
+            ) * 15;
 
 
         const x =
@@ -486,32 +638,12 @@ function drawIdleVisualizer() {
 
 
         const y =
-            height - barHeight;
-
-
-        const gradient =
-            ctx.createLinearGradient(
-                0,
-                height,
-                0,
-                0
-            );
-
-
-        gradient.addColorStop(
-            0,
-            "#ffb62e"
-        );
-
-
-        gradient.addColorStop(
-            1,
-            "#ff557c"
-        );
+            height -
+            barHeight;
 
 
         ctx.fillStyle =
-            gradient;
+            "#ff6c91";
 
 
         ctx.beginPath();
@@ -533,237 +665,14 @@ function drawIdleVisualizer() {
 }
 
 
-/* =========================================================
-   SONG DATA
-========================================================= */
-
-const songs = [
-
-    {
-        title: "Lag Ja Gale",
-        artist: "Lata Mangeshkar",
-        file: "audio/song.mp3"
-    },
-
-    {
-        title: "Pehla Nasha",
-        artist: "Udit Narayan & Sadhana Sargam",
-        file: "audio/song.mp3"
-    },
-
-    {
-        title: "Chura Liya Hai Tumne",
-        artist: "Asha Bhosle & Mohammed Rafi",
-        file: "audio/song.mp3"
-    },
-
-    {
-        title: "Kabhi Kabhi Mere Dil Mein",
-        artist: "Mukesh",
-        file: "audio/song.mp3"
-    },
-
-    {
-        title: "Tujhe Dekha To",
-        artist: "Kumar Sanu & Lata Mangeshkar",
-        file: "audio/song.mp3"
-    }
-
-];
-
-
-let currentSong = 0;
-
-
-/* =========================================================
-   PLAY SELECTED SONG
-========================================================= */
-
-function playSong(
-    title,
-    artist
-) {
-
-    songTitle.innerText =
-        title;
-
-    songArtist.innerText =
-        artist;
-
-
-    setupAudio();
-
-
-    if (
-        audioContext.state ===
-        "suspended"
-    ) {
-
-        audioContext.resume();
-
-    }
-
-
-    audio.play()
-        .then(() => {
-
-            updatePlayingState(true);
-
-        })
-        .catch(
-            console.log
-        );
-
-}
-
-
-/* =========================================================
-   NEXT SONG
-========================================================= */
-
-function nextSong() {
-
-    currentSong++;
-
-    if (
-        currentSong >=
-        songs.length
-    ) {
-
-        currentSong = 0;
-
-    }
-
-
-    const song =
-        songs[currentSong];
-
-
-    songTitle.innerText =
-        song.title;
-
-
-    songArtist.innerText =
-        song.artist;
-
-
-    audio.src =
-        song.file;
-
-
-    audio.load();
-
-
-    audio.play()
-        .then(() => {
-
-            updatePlayingState(true);
-
-        });
-
-}
-
-
-/* =========================================================
-   PREVIOUS SONG
-========================================================= */
-
-function previousSong() {
-
-    currentSong--;
-
-    if (currentSong < 0) {
-
-        currentSong =
-            songs.length - 1;
-
-    }
-
-
-    const song =
-        songs[currentSong];
-
-
-    songTitle.innerText =
-        song.title;
-
-
-    songArtist.innerText =
-        song.artist;
-
-
-    audio.src =
-        song.file;
-
-
-    audio.load();
-
-
-    audio.play()
-        .then(() => {
-
-            updatePlayingState(true);
-
-        });
-
-}
-
-
-/* =========================================================
-   SCROLL TO PLAYER
-========================================================= */
-
-function scrollToPlayer() {
-
-    document
-        .getElementById("player")
-        .scrollIntoView({
-            behavior: "smooth"
-        });
-
-}
-
-
-/* =========================================================
-   RESIZE
-========================================================= */
-
-window.addEventListener(
-    "resize",
-    () => {
-
-        if (canvas) {
-
-            canvas.width =
-                canvas.clientWidth *
-                window.devicePixelRatio;
-
-            canvas.height =
-                canvas.clientHeight *
-                window.devicePixelRatio;
-
-        }
-
-    }
-);
-
-
-/* =========================================================
-   START IDLE VISUALIZER
-========================================================= */
-
 setInterval(
-    () => {
-
-        if (
-            !audio ||
-            audio.paused
-        ) {
-
-            drawIdleVisualizer();
-
-        }
-
-    },
+    drawIdleVisualizer,
     50
 );
+
+
+/* ==========================================================
+   INITIAL SONG
+========================================================== */
+
+loadSong(0);
