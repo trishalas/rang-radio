@@ -1,787 +1,33 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
+
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Rang Radio — Hindi Music & Stories</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>Rang Radio — Good Music. Old Soul.</title>
 
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+    <meta name="description"
+          content="Rang Radio — timeless Hindi music, stories and nostalgia.">
+
+    <!-- Google Fonts -->
+
+    <link rel="preconnect"
+          href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
           rel="stylesheet">
 
-    <style>
+    <link rel="stylesheet"
+          href="style.css">
 
-        /* =====================================================
-           BASIC RESET
-        ===================================================== */
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "DM Sans", sans-serif;
-            background: #fff8ed;
-            color: #321d2b;
-            overflow-x: hidden;
-        }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        /* =====================================================
-           COLORS
-        ===================================================== */
-
-        :root {
-            --cream: #fff8ed;
-            --pink: #f8c8d8;
-            --coral: #ef7657;
-            --orange: #f6a623;
-            --yellow: #f9d96c;
-            --purple: #60468f;
-            --deep-purple: #321d49;
-            --green: #88a878;
-            --dark: #321d2b;
-        }
-
-
-        /* =====================================================
-           DECORATIVE BACKGROUND
-        ===================================================== */
-
-        body::before {
-            content: "";
-            position: fixed;
-            width: 400px;
-            height: 400px;
-            border-radius: 50%;
-            background: #f8c8d8;
-            filter: blur(90px);
-            opacity: .45;
-            top: -150px;
-            left: -150px;
-            z-index: -1;
-        }
-
-        body::after {
-            content: "";
-            position: fixed;
-            width: 450px;
-            height: 450px;
-            border-radius: 50%;
-            background: #f9d96c;
-            filter: blur(100px);
-            opacity: .35;
-            right: -200px;
-            bottom: 10%;
-            z-index: -1;
-        }
-
-
-        /* =====================================================
-           NAVIGATION
-        ===================================================== */
-
-        header {
-            width: 100%;
-            padding: 22px 6%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-
-            position: sticky;
-            top: 0;
-
-            z-index: 100;
-
-            background: rgba(255,248,237,.82);
-            backdrop-filter: blur(15px);
-
-            border-bottom: 1px solid rgba(50,29,43,.1);
-        }
-
-        .logo {
-            font-family: "Playfair Display", serif;
-            font-size: 25px;
-            font-weight: 700;
-
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .logo span {
-            color: var(--coral);
-        }
-
-        nav {
-            display: flex;
-            gap: 30px;
-            font-size: 14px;
-            font-weight: 600;
-        }
-
-        nav a {
-            transition: .3s;
-        }
-
-        nav a:hover {
-            color: var(--coral);
-        }
-
-
-        /* =====================================================
-           HERO
-        ===================================================== */
-
-        .hero {
-            min-height: 80vh;
-
-            max-width: 1250px;
-            margin: auto;
-
-            padding: 100px 6% 70px;
-
-            display: grid;
-            grid-template-columns: 1.2fr .8fr;
-
-            align-items: center;
-
-            gap: 60px;
-        }
-
-        .small-heading {
-            font-family: "Noto Sans Devanagari", sans-serif;
-
-            color: var(--coral);
-
-            font-size: 16px;
-
-            margin-bottom: 20px;
-        }
-
-        h1 {
-            font-family: "Playfair Display", serif;
-
-            font-size: clamp(55px, 8vw, 110px);
-
-            line-height: .94;
-
-            letter-spacing: -4px;
-
-            color: var(--deep-purple);
-        }
-
-        h1 em {
-            color: var(--coral);
-        }
-
-        .hero-description {
-            margin-top: 30px;
-
-            max-width: 600px;
-
-            font-size: 18px;
-
-            line-height: 1.7;
-
-            color: #684b5c;
-        }
-
-
-        /* =====================================================
-           HERO ART
-        ===================================================== */
-
-        .hero-art {
-            position: relative;
-
-            height: 430px;
-        }
-
-        .sun {
-            position: absolute;
-
-            width: 280px;
-            height: 280px;
-
-            background: var(--yellow);
-
-            border-radius: 50%;
-
-            top: 40px;
-            right: 50px;
-        }
-
-        .radio {
-            position: absolute;
-
-            width: 260px;
-            height: 190px;
-
-            background: var(--coral);
-
-            border-radius: 25px;
-
-            top: 120px;
-            left: 20px;
-
-            transform: rotate(-6deg);
-
-            box-shadow: 15px 20px 0 rgba(50,29,43,.12);
-        }
-
-        .radio::before {
-            content: "";
-
-            position: absolute;
-
-            width: 170px;
-            height: 65px;
-
-            background: var(--deep-purple);
-
-            border-radius: 8px;
-
-            top: 25px;
-            left: 45px;
-        }
-
-        .radio::after {
-            content: "♫  ♫";
-
-            position: absolute;
-
-            color: white;
-
-            font-size: 20px;
-
-            bottom: 25px;
-            left: 95px;
-        }
-
-        .dial {
-            position: absolute;
-
-            width: 35px;
-            height: 35px;
-
-            border-radius: 50%;
-
-            background: var(--yellow);
-
-            bottom: 25px;
-            left: 25px;
-
-            box-shadow:
-                50px 0 0 var(--yellow);
-        }
-
-
-        /* =====================================================
-           PLAYER
-        ===================================================== */
-
-        .player-wrapper {
-            max-width: 1100px;
-
-            margin: -30px auto 100px;
-
-            padding: 0 6%;
-        }
-
-        .player {
-
-            background: var(--deep-purple);
-
-            color: white;
-
-            border-radius: 28px;
-
-            padding: 30px 35px;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-
-            box-shadow: 0 20px 50px rgba(50,29,73,.18);
-        }
-
-        .now-playing {
-
-            font-size: 11px;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
-            color: var(--yellow);
-        }
-
-        .song-title {
-
-            font-family: "Playfair Display", serif;
-
-            font-size: 30px;
-
-            margin-top: 5px;
-        }
-
-        .artist {
-
-            color: #d9c9df;
-
-            font-size: 14px;
-
-            margin-top: 5px;
-        }
-
-        .play-button {
-
-            width: 70px;
-            height: 70px;
-
-            border-radius: 50%;
-
-            border: none;
-
-            background: var(--yellow);
-
-            color: var(--deep-purple);
-
-            font-size: 24px;
-
-            cursor: pointer;
-
-            transition: .3s;
-        }
-
-        .play-button:hover {
-
-            transform: scale(1.1) rotate(5deg);
-
-        }
-
-
-        /* =====================================================
-           GENERAL SECTION
-        ===================================================== */
-
-        section {
-
-            max-width: 1200px;
-
-            margin: auto;
-
-            padding: 80px 6%;
-        }
-
-        .section-label {
-
-            color: var(--coral);
-
-            font-size: 13px;
-
-            font-weight: 700;
-
-            text-transform: uppercase;
-
-            letter-spacing: 2px;
-
-            margin-bottom: 12px;
-        }
-
-        .section-title {
-
-            font-family: "Playfair Display", serif;
-
-            font-size: clamp(38px, 5vw, 60px);
-
-            color: var(--deep-purple);
-
-            margin-bottom: 40px;
-        }
-
-
-        /* =====================================================
-           ROTATIONS
-        ===================================================== */
-
-        .rotations {
-
-            display: grid;
-
-            grid-template-columns: repeat(2,1fr);
-
-            gap: 20px;
-        }
-
-        .rotation {
-
-            padding: 35px;
-
-            min-height: 230px;
-
-            border-radius: 25px;
-
-            transition: .3s;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .rotation:hover {
-
-            transform: translateY(-8px);
-
-            box-shadow: 0 15px 35px rgba(50,29,43,.12);
-        }
-
-        .rotation:nth-child(1) {
-            background: var(--pink);
-        }
-
-        .rotation:nth-child(2) {
-            background: var(--yellow);
-        }
-
-        .rotation:nth-child(3) {
-            background: #d9c9ec;
-        }
-
-        .rotation:nth-child(4) {
-            background: #c9dfbd;
-        }
-
-        .rotation h3 {
-
-            font-family: "Noto Sans Devanagari", sans-serif;
-
-            font-size: 25px;
-
-            margin-bottom: 15px;
-        }
-
-        .rotation p {
-
-            max-width: 350px;
-
-            color: #59424e;
-
-            line-height: 1.6;
-        }
-
-        .time {
-
-            position: absolute;
-
-            bottom: 25px;
-
-            font-size: 12px;
-
-            font-weight: 700;
-
-            letter-spacing: 1px;
-        }
-
-        .flower {
-
-            position: absolute;
-
-            right: -20px;
-
-            bottom: -40px;
-
-            font-size: 120px;
-
-            opacity: .15;
-        }
-
-
-        /* =====================================================
-           SONGS
-        ===================================================== */
-
-        .songs {
-
-            display: flex;
-
-            flex-direction: column;
-
-            gap: 12px;
-        }
-
-        .song {
-
-            display: grid;
-
-            grid-template-columns: 60px 1fr auto;
-
-            align-items: center;
-
-            padding: 22px 25px;
-
-            border-radius: 18px;
-
-            background: white;
-
-            border: 1px solid rgba(50,29,43,.08);
-
-            transition: .3s;
-        }
-
-        .song:hover {
-
-            background: #fff0f4;
-
-            transform: translateX(8px);
-        }
-
-        .song-number {
-
-            color: var(--coral);
-
-            font-weight: 700;
-        }
-
-        .song-name {
-
-            font-family: "Playfair Display", serif;
-
-            font-size: 21px;
-        }
-
-        .movie {
-
-            color: #947987;
-
-            font-size: 13px;
-
-            margin-top: 3px;
-        }
-
-        .listen {
-
-            padding: 9px 17px;
-
-            border-radius: 30px;
-
-            background: var(--pink);
-
-            font-size: 12px;
-
-            font-weight: 700;
-        }
-
-
-        /* =====================================================
-           ABOUT
-        ===================================================== */
-
-        .about-box {
-
-            background: var(--coral);
-
-            color: white;
-
-            border-radius: 35px;
-
-            padding: 70px;
-
-            position: relative;
-
-            overflow: hidden;
-        }
-
-        .about-box h2 {
-
-            font-family: "Playfair Display", serif;
-
-            font-size: clamp(40px,5vw,70px);
-
-            max-width: 700px;
-
-            line-height: 1;
-        }
-
-        .about-box p {
-
-            max-width: 600px;
-
-            margin-top: 25px;
-
-            font-size: 17px;
-
-            line-height: 1.7;
-        }
-
-        .about-circle {
-
-            position: absolute;
-
-            width: 250px;
-            height: 250px;
-
-            border-radius: 50%;
-
-            background: var(--yellow);
-
-            right: -80px;
-
-            bottom: -100px;
-        }
-
-
-        /* =====================================================
-           FOOTER
-        ===================================================== */
-
-        footer {
-
-            margin-top: 60px;
-
-            background: var(--deep-purple);
-
-            color: white;
-
-            padding: 60px 6%;
-
-            display: flex;
-
-            justify-content: space-between;
-
-            align-items: center;
-        }
-
-        .footer-logo {
-
-            font-family: "Playfair Display", serif;
-
-            font-size: 25px;
-        }
-
-        .footer-text {
-
-            color: #cdbed4;
-
-            font-size: 13px;
-        }
-
-
-        /* =====================================================
-           MOBILE
-        ===================================================== */
-
-        @media(max-width: 800px) {
-
-            header {
-
-                padding: 18px 5%;
-
-            }
-
-            nav {
-
-                gap: 12px;
-
-                font-size: 12px;
-
-            }
-
-            .hero {
-
-                grid-template-columns: 1fr;
-
-                padding-top: 70px;
-
-            }
-
-            .hero-art {
-
-                height: 330px;
-
-            }
-
-            .sun {
-
-                width: 220px;
-
-                height: 220px;
-
-            }
-
-            .radio {
-
-                width: 220px;
-
-                height: 160px;
-
-            }
-
-            .radio::before {
-
-                width: 140px;
-
-            }
-
-            .rotations {
-
-                grid-template-columns: 1fr;
-
-            }
-
-            .player {
-
-                padding: 25px;
-
-            }
-
-            .song {
-
-                grid-template-columns: 35px 1fr;
-
-            }
-
-            .listen {
-
-                display: none;
-
-            }
-
-            .about-box {
-
-                padding: 40px 30px;
-
-            }
-
-            footer {
-
-                flex-direction: column;
-
-                align-items: flex-start;
-
-                gap: 15px;
-
-            }
-
-        }
-
-    </style>
 </head>
 
 
@@ -789,28 +35,56 @@
 
 
 <!-- =====================================================
-     HEADER
+     NAVIGATION
 ===================================================== -->
 
-<header>
+<header class="navbar">
 
-    <div class="logo">
-        <span>रंग</span> RADIO
-    </div>
+    <a href="#" class="logo">
+
+        <div class="logo-name">
+            Rang
+        </div>
+
+        <div class="logo-sub">
+            RADIO
+        </div>
+
+        <div class="logo-hindi">
+            सुरों की एक प्यारी सी दुनिया
+        </div>
+
+    </a>
+
 
     <nav>
 
         <a href="#home">Home</a>
 
-        <a href="#rotations">Music</a>
+        <a href="#shows">Shows</a>
 
         <a href="#songs">Songs</a>
 
+        <a href="#blog">Blog</a>
+
         <a href="#about">About</a>
+
+        <a href="#contact">Contact</a>
 
     </nav>
 
+
+    <button class="live-button"
+            onclick="scrollToPlayer()">
+
+        <span class="live-dot"></span>
+
+        Live Now
+
+    </button>
+
 </header>
+
 
 
 <!-- =====================================================
@@ -819,427 +93,846 @@
 
 <main id="home">
 
-    <div class="hero">
+<section class="hero">
 
-        <div>
 
-            <div class="small-heading">
-                ✦ पुराने गाने, नई यादें
-            </div>
+    <div class="hero-content">
 
-            <h1>
-                Music that<br>
-                <em>feels like home.</em>
-            </h1>
+        <div class="eyebrow">
 
-            <p class="hero-description">
-
-                A colourful little corner of the internet
-                celebrating Hindi music, old memories,
-                chai, monsoon evenings and songs that
-                never really get old.
-
-            </p>
+            ✦ पुराने गाने, नई यादें
 
         </div>
 
 
-        <div class="hero-art">
+        <h1>
 
-            <div class="sun"></div>
+            Good Music.
+            <br>
 
-            <div class="radio">
+            <span>Old Soul.</span>
 
-                <div class="dial"></div>
+            <br>
 
-            </div>
+            Pure Feelings.
+
+        </h1>
+
+
+        <p>
+
+            A cosy corner of the internet playing
+            timeless Hindi melodies, 24/7.
+
+            Because some songs never get old.
+
+        </p>
+
+
+        <div class="hero-buttons">
+
+            <button class="primary-button"
+                    onclick="toggleMusic()">
+
+                <span id="heroPlayIcon">▶</span>
+
+                Listen Live
+
+            </button>
+
+
+            <a href="#shows"
+               class="secondary-button">
+
+                Explore Shows
+
+                <span>♡</span>
+
+            </a>
 
         </div>
 
     </div>
 
 
-    <!-- =================================================
-         PLAYER
-    ================================================= -->
 
-    <div class="player-wrapper">
+    <!-- RADIO ART -->
 
-        <div class="player">
+    <div class="hero-art">
 
-            <div>
+        <div class="sun"></div>
 
-                <div class="now-playing">
-                    ● Now Playing
+        <div class="mandala">
+
+            ✺
+
+        </div>
+
+
+        <div class="flower flower-one">
+            ✿
+        </div>
+
+        <div class="flower flower-two">
+            ❀
+        </div>
+
+
+        <div class="radio">
+
+            <div class="radio-top">
+
+                <div class="radio-brand">
+                    RANG
                 </div>
 
-                <div class="song-title" id="songTitle">
-                    Chura Liya Hai Tumne
-                </div>
-
-                <div class="artist" id="artist">
-                    Asha Bhosle & Mohammed Rafi
-                </div>
+                <div class="radio-light"></div>
 
             </div>
 
-            <button
-                class="play-button"
-                id="playButton"
-                onclick="toggleMusic()">
+
+            <div class="radio-screen">
+
+                88.7
+
+                <span>FM</span>
+
+            </div>
+
+
+            <div class="radio-dials">
+
+                <div></div>
+                <div></div>
+
+            </div>
+
+
+            <div class="radio-speaker">
+
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+        </div>
+
+
+        <!-- Decorative music lines -->
+
+        <div class="music-lines">
+
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+            <span></span>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     MUSIC PLAYER
+===================================================== -->
+
+<section class="player-section"
+         id="player">
+
+    <div class="player">
+
+
+        <div class="album-art">
+
+            <div class="vinyl">
+
+                <div class="vinyl-center"></div>
+
+            </div>
+
+        </div>
+
+
+        <div class="track-info">
+
+            <div class="playing-label">
+
+                NOW PLAYING
+
+            </div>
+
+            <h2 id="songTitle">
+
+                Your Song
+
+            </h2>
+
+            <p id="songArtist">
+
+                Rang Radio • Live
+
+            </p>
+
+        </div>
+
+
+        <div class="player-controls">
+
+            <button onclick="previousSong()">
+                |◀
+            </button>
+
+
+            <button class="main-play"
+                    id="playButton"
+                    onclick="toggleMusic()">
 
                 ▶
 
+            </button>
+
+
+            <button onclick="nextSong()">
+                ▶|
+            </button>
+
+        </div>
+
+
+        <!-- LIVE VISUALIZER -->
+
+        <div class="visualizer-container">
+
+            <div class="visualizer-label">
+
+                LIVE STRINGS
+
+            </div>
+
+            <canvas id="visualizer"></canvas>
+
+        </div>
+
+    </div>
+
+
+    <!-- Audio -->
+
+    <audio id="audioPlayer"
+           crossorigin="anonymous">
+
+        <source src="audio/song.mp3"
+                type="audio/mpeg">
+
+    </audio>
+
+</section>
+
+
+
+<!-- =====================================================
+     SHOWS
+===================================================== -->
+
+<section id="shows"
+         class="section">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-label">
+                ✿ Featured Shows
+            </div>
+
+            <h2>
+                Pick your mood.
+            </h2>
+
+        </div>
+
+
+        <a href="#">
+            View All Shows →
+        </a>
+
+    </div>
+
+
+
+    <div class="show-grid">
+
+
+        <article class="show-card morning">
+
+            <div class="show-image">
+
+                ☕
+
+            </div>
+
+            <div class="show-content">
+
+                <h3>
+                    सुबह की चाय
+                </h3>
+
+                <p>
+                    Morning melodies to
+                    start your day.
+                </p>
+
+                <span>
+                    6AM — 10AM
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="show-card nineties">
+
+            <div class="show-image">
+
+                📻
+
+            </div>
+
+            <div class="show-content">
+
+                <h3>
+                    90s Ke Deewane
+                </h3>
+
+                <p>
+                    The golden era of
+                    90s Hindi hits.
+                </p>
+
+                <span>
+                    10AM — 2PM
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="show-card ghazal">
+
+            <div class="show-image">
+
+                🏮
+
+            </div>
+
+            <div class="show-content">
+
+                <h3>
+                    Shaam-E-Ghazal
+                </h3>
+
+                <p>
+                    Ghazals for your
+                    peaceful evenings.
+                </p>
+
+                <span>
+                    6PM — 9PM
+                </span>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="show-card night">
+
+            <div class="show-image">
+
+                🌙
+
+            </div>
+
+            <div class="show-content">
+
+                <h3>
+                    Raat Ke Nagme
+                </h3>
+
+                <p>
+                    Slow songs for
+                    the late night souls.
+                </p>
+
+                <span>
+                    9PM — 1AM
+                </span>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     SONGS
+===================================================== -->
+
+<section id="songs"
+         class="section songs-section">
+
+
+    <div class="section-heading">
+
+        <div>
+
+            <div class="section-label">
+                ♡ Top Picks
+            </div>
+
+            <h2>
+                Songs we love.
+            </h2>
+
+        </div>
+
+        <a href="#">
+            View Playlist →
+        </a>
+
+    </div>
+
+
+    <div class="song-list">
+
+
+        <div class="song"
+             onclick="playSong(
+             'Lag Ja Gale',
+             'Lata Mangeshkar'
+             )">
+
+            <div class="song-number">
+                01
+            </div>
+
+            <div class="song-details">
+
+                <strong>
+                    Lag Ja Gale
+                </strong>
+
+                <small>
+                    Lata Mangeshkar • Woh Kaun Thi?
+                </small>
+
+            </div>
+
+            <button>
+                ▶
+            </button>
+
+        </div>
+
+
+
+        <div class="song"
+             onclick="playSong(
+             'Pehla Nasha',
+             'Udit Narayan & Sadhana Sargam'
+             )">
+
+            <div class="song-number">
+                02
+            </div>
+
+            <div class="song-details">
+
+                <strong>
+                    Pehla Nasha
+                </strong>
+
+                <small>
+                    Udit Narayan • Jo Jeeta Wohi Sikandar
+                </small>
+
+            </div>
+
+            <button>
+                ▶
+            </button>
+
+        </div>
+
+
+
+        <div class="song"
+             onclick="playSong(
+             'Chura Liya Hai Tumne',
+             'Asha Bhosle & Mohammed Rafi'
+             )">
+
+            <div class="song-number">
+                03
+            </div>
+
+            <div class="song-details">
+
+                <strong>
+                    Chura Liya Hai Tumne
+                </strong>
+
+                <small>
+                    Asha Bhosle & Mohammed Rafi
+                </small>
+
+            </div>
+
+            <button>
+                ▶
+            </button>
+
+        </div>
+
+
+
+        <div class="song"
+             onclick="playSong(
+             'Kabhi Kabhi Mere Dil Mein',
+             'Mukesh'
+             )">
+
+            <div class="song-number">
+                04
+            </div>
+
+            <div class="song-details">
+
+                <strong>
+                    Kabhi Kabhi Mere Dil Mein
+                </strong>
+
+                <small>
+                    Mukesh • Kabhi Kabhie
+                </small>
+
+            </div>
+
+            <button>
+                ▶
+            </button>
+
+        </div>
+
+
+
+        <div class="song"
+             onclick="playSong(
+             'Tujhe Dekha To',
+             'Kumar Sanu & Lata Mangeshkar'
+             )">
+
+            <div class="song-number">
+                05
+            </div>
+
+            <div class="song-details">
+
+                <strong>
+                    Tujhe Dekha To
+                </strong>
+
+                <small>
+                    Kumar Sanu & Lata Mangeshkar
+                </small>
+
+            </div>
+
+            <button>
+                ▶
             </button>
 
         </div>
 
     </div>
 
-
-    <!-- =================================================
-         ROTATIONS
-    ================================================= -->
-
-    <section id="rotations">
-
-        <div class="section-label">
-            ✦ On the radio
-        </div>
-
-        <div class="section-title">
-            Pick your mood.
-        </div>
+</section>
 
 
-        <div class="rotations">
+
+<!-- =====================================================
+     BLOG
+===================================================== -->
+
+<section id="blog"
+         class="section blog-section">
 
 
-            <div class="rotation">
+    <div class="section-heading">
 
-                <h3>
-                    ☀️ सुबह की धुन
-                </h3>
+        <div>
 
-                <p>
-                    Soft melodies for slow mornings,
-                    chai and sunlight coming through
-                    the window.
-                </p>
-
-                <div class="time">
-                    06:00 — 10:00
-                </div>
-
-                <div class="flower">
-                    ✿
-                </div>
-
+            <div class="section-label">
+                ✦ Stories
             </div>
-
-
-            <div class="rotation">
-
-                <h3>
-                    🌼 दोपहर के गाने
-                </h3>
-
-                <p>
-                    Happy songs for lunch breaks,
-                    road trips and lazy afternoons.
-                </p>
-
-                <div class="time">
-                    10:00 — 16:00
-                </div>
-
-                <div class="flower">
-                    ✽
-                </div>
-
-            </div>
-
-
-            <div class="rotation">
-
-                <h3>
-                    💜 90s Dard
-                </h3>
-
-                <p>
-                    Kumar Sanu, Alka Yagnik and
-                    just enough heartbreak.
-                </p>
-
-                <div class="time">
-                    16:00 — 21:00
-                </div>
-
-                <div class="flower">
-                    ✦
-                </div>
-
-            </div>
-
-
-            <div class="rotation">
-
-                <h3>
-                    🌙 रात के नग़मे
-                </h3>
-
-                <p>
-                    Slow songs for late nights,
-                    long conversations and memories.
-                </p>
-
-                <div class="time">
-                    21:00 — 00:00
-                </div>
-
-                <div class="flower">
-                    ☾
-                </div>
-
-            </div>
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         SONGS
-    ================================================= -->
-
-    <section id="songs">
-
-        <div class="section-label">
-            ✦ Listener favourites
-        </div>
-
-        <div class="section-title">
-            Songs we love.
-        </div>
-
-
-        <div class="songs">
-
-
-            <div class="song">
-
-                <div class="song-number">
-                    01
-                </div>
-
-                <div>
-
-                    <div class="song-name">
-                        Chura Liya Hai Tumne
-                    </div>
-
-                    <div class="movie">
-                        Yaadon Ki Baaraat · 1973
-                    </div>
-
-                </div>
-
-                <div class="listen">
-                    Listen ♫
-                </div>
-
-            </div>
-
-
-            <div class="song">
-
-                <div class="song-number">
-                    02
-                </div>
-
-                <div>
-
-                    <div class="song-name">
-                        Ek Ladki Ko Dekha
-                    </div>
-
-                    <div class="movie">
-                        1942: A Love Story · 1994
-                    </div>
-
-                </div>
-
-                <div class="listen">
-                    Listen ♫
-                </div>
-
-            </div>
-
-
-            <div class="song">
-
-                <div class="song-number">
-                    03
-                </div>
-
-                <div>
-
-                    <div class="song-name">
-                        Pehla Nasha
-                    </div>
-
-                    <div class="movie">
-                        Jo Jeeta Wohi Sikandar · 1992
-                    </div>
-
-                </div>
-
-                <div class="listen">
-                    Listen ♫
-                </div>
-
-            </div>
-
-
-            <div class="song">
-
-                <div class="song-number">
-                    04
-                </div>
-
-                <div>
-
-                    <div class="song-name">
-                        Tujhe Dekha To
-                    </div>
-
-                    <div class="movie">
-                        Dilwale Dulhania Le Jayenge · 1995
-                    </div>
-
-                </div>
-
-                <div class="listen">
-                    Listen ♫
-                </div>
-
-            </div>
-
-
-            <div class="song">
-
-                <div class="song-number">
-                    05
-                </div>
-
-                <div>
-
-                    <div class="song-name">
-                        Chaiyya Chaiyya
-                    </div>
-
-                    <div class="movie">
-                        Dil Se · 1998
-                    </div>
-
-                </div>
-
-                <div class="listen">
-                    Listen ♫
-                </div>
-
-            </div>
-
-
-        </div>
-
-    </section>
-
-
-    <!-- =================================================
-         ABOUT
-    ================================================= -->
-
-    <section id="about">
-
-        <div class="about-box">
 
             <h2>
-                Not just music.
-                It's a feeling.
+                From the blog.
             </h2>
-
-            <p>
-
-                Rang Radio is a small digital space
-                made for people who believe that some
-                songs can take you back to a person,
-                a place, a rainy evening or a cup of chai.
-
-                <br><br>
-
-                Put your headphones on.
-                Stay for a while.
-
-            </p>
-
-            <div class="about-circle"></div>
 
         </div>
 
-    </section>
+        <a href="#">
+            Read All →
+        </a>
+
+    </div>
+
+
+    <div class="blog-grid">
+
+
+        <article class="blog-card">
+
+            <div class="blog-image">
+                ♫
+            </div>
+
+            <div class="blog-content">
+
+                <span>
+                    MUSIC
+                </span>
+
+                <h3>
+                    Why Old Hindi Songs
+                    Hit Different ❤️
+                </h3>
+
+                <p>
+                    Some thoughts on nostalgia
+                    and timeless music.
+                </p>
+
+                <small>
+                    May 20, 2026
+                </small>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="blog-card">
+
+            <div class="blog-image">
+                🎙
+            </div>
+
+            <div class="blog-content">
+
+                <span>
+                    LEGENDS
+                </span>
+
+                <h3>
+                    R.D. Burman:
+                    The Heart Behind The Magic
+                </h3>
+
+                <p>
+                    Remembering one of India's
+                    greatest musical minds.
+                </p>
+
+                <small>
+                    May 12, 2026
+                </small>
+
+            </div>
+
+        </article>
+
+
+
+        <article class="blog-card">
+
+            <div class="blog-image">
+                ☔
+            </div>
+
+            <div class="blog-content">
+
+                <span>
+                    PLAYLIST
+                </span>
+
+                <h3>
+                    Monsoon Playlist
+                    ☂️
+                </h3>
+
+                <p>
+                    Songs that make rain
+                    even more beautiful.
+                </p>
+
+                <small>
+                    May 05, 2026
+                </small>
+
+            </div>
+
+        </article>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     QUOTE
+===================================================== -->
+
+<section class="quote-section">
+
+    <div class="quote">
+
+        <div class="quote-mark">
+            “
+        </div>
+
+        <h2>
+            Songs are the memories
+            we can always go back to.
+        </h2>
+
+        <span>
+            ♥
+        </span>
+
+    </div>
+
+</section>
+
+
+
+<!-- =====================================================
+     ABOUT
+===================================================== -->
+
+<section id="about"
+         class="about-section">
+
+    <div>
+
+        <div class="section-label">
+            ✦ About Rang Radio
+        </div>
+
+        <h2>
+            A little corner
+            for music lovers.
+        </h2>
+
+    </div>
+
+
+    <p>
+
+        Rang Radio is a digital home for
+        Hindi music, stories and nostalgia.
+
+        <br><br>
+
+        Put your headphones on.
+        Stay for a while.
+
+    </p>
+
+</section>
+
+
 
 </main>
+
 
 
 <!-- =====================================================
      FOOTER
 ===================================================== -->
 
-<footer>
+<footer id="contact">
 
     <div class="footer-logo">
-        रंग RADIO
+
+        <strong>
+            Rang
+        </strong>
+
+        <span>
+            RADIO
+        </span>
+
     </div>
 
-    <div class="footer-text">
-        Made with music & nostalgia ♡
+
+    <div>
+
+        Made with ♡ for music lovers.
+
+        <br>
+
+        © 2026 Rang Radio
+
+    </div>
+
+
+    <div class="socials">
+
+        <a href="#">Instagram</a>
+
+        <a href="#">YouTube</a>
+
+        <a href="#">Spotify</a>
+
     </div>
 
 </footer>
+
 
 
 <!-- =====================================================
      JAVASCRIPT
 ===================================================== -->
 
-<script>
-
-    let playing = false;
-
-    function toggleMusic() {
-
-        const button =
-            document.getElementById("playButton");
-
-        if (!playing) {
-
-            button.innerHTML = "❚❚";
-
-            playing = true;
-
-        } else {
-
-            button.innerHTML = "▶";
-
-            playing = false;
-
-        }
-
-    }
-
-</script>
-
+<script src="script.js"></script>
 
 </body>
+
 </html>
