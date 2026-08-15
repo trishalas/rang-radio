@@ -1,84 +1,46 @@
-/* =========================================================
-   RANG RADIO
-   ARTISTIC MUSIC WEBSITE
-========================================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 
 :root {
 
-    --cream: #fff4e8;
-    --cream-dark: #f7dfd0;
+    --pink: #ff4f83;
+    --pink-light: #ffd5e2;
 
-    --purple: #291039;
-    --purple-light: #4a2465;
+    --blue: #269de5;
+    --blue-light: #d7f2ff;
 
-    --pink: #ef4d78;
-    --pink-light: #f5a0b5;
+    --orange: #ff9c27;
+    --yellow: #ffd85c;
 
-    --orange: #f05d38;
-    --orange-light: #ff9a38;
+    --purple: #8a4cc2;
 
-    --yellow: #ffc94a;
-
-    --text: #351e35;
-    --muted: #806b7b;
+    --white: #ffffff;
 
 }
 
 
-/* =========================================================
-   RESET
-========================================================= */
+html,
+body {
 
-* {
+    width: 100%;
+    height: 100%;
 
-    margin: 0;
-    padding: 0;
-
-    box-sizing: border-box;
-
-}
-
-
-html {
-
-    scroll-behavior: smooth;
+    overflow: hidden;
 
 }
 
 
 body {
 
-    background:
-        radial-gradient(
-            circle at 10% 10%,
-            #ffe1d4,
-            transparent 30%
-        ),
-
-        radial-gradient(
-            circle at 90% 30%,
-            #f7d3dd,
-            transparent 30%
-        ),
-
-        var(--cream);
-
-    color: var(--text);
-
     font-family:
         "DM Sans",
         sans-serif;
 
-    overflow-x: hidden;
-
-}
-
-
-a {
-
-    color: inherit;
-
-    text-decoration: none;
+    background: #fff;
 
 }
 
@@ -87,18 +49,44 @@ button {
 
     font-family: inherit;
 
+    cursor: pointer;
+
+    border: none;
+
 }
 
 
-/* =========================================================
-   NAVBAR
-========================================================= */
+.radio-app {
 
-.navbar {
+    width: 100vw;
+    height: 100vh;
 
-    height: 90px;
+    position: relative;
 
-    padding: 15px 5%;
+    overflow: hidden;
+
+    transition:
+        background 1s ease;
+
+}
+
+
+/* ======================================================
+   HEADER
+====================================================== */
+
+.header {
+
+    position: absolute;
+
+    top: 0;
+    left: 0;
+
+    width: 100%;
+
+    height: 85px;
+
+    z-index: 100;
 
     display: flex;
 
@@ -106,351 +94,462 @@ button {
 
     justify-content: space-between;
 
-    position: sticky;
-
-    top: 0;
-
-    z-index: 1000;
-
-    background:
-        rgba(255,244,232,.82);
-
-    backdrop-filter:
-        blur(18px);
-
-    border-bottom:
-        1px solid rgba(41,16,57,.08);
+    padding: 15px 28px;
 
 }
 
 
-.logo {
-
-    position: relative;
-
-    min-width: 190px;
-
-}
-
-
-.logo-name {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 37px;
-
-    font-weight: 700;
-
-    color: #7c2451;
-
-    line-height: .75;
-
-}
-
-
-.logo-name::after {
-
-    content: "✿";
-
-    color: var(--orange);
-
-    font-size: 20px;
-
-    margin-left: 7px;
-
-}
-
-
-.logo-sub {
-
-    letter-spacing: 5px;
-
-    font-size: 11px;
-
-    font-weight: 700;
-
-    margin-top: 9px;
-
-}
-
-
-.logo-hindi {
-
-    font-family:
-        "Noto Sans Devanagari",
-        sans-serif;
-
-    font-size: 9px;
-
-    color: #8c6475;
-
-    margin-top: 4px;
-
-}
-
-
-.navbar nav {
-
-    display: flex;
-
-    gap: 30px;
-
-    font-size: 13px;
-
-}
-
-
-.navbar nav a {
-
-    position: relative;
-
-}
-
-
-.navbar nav a::after {
-
-    content: "";
+.brand {
 
     position: absolute;
 
-    width: 0;
+    left: 50%;
 
-    height: 2px;
+    transform: translateX(-50%);
 
-    left: 0;
+    text-align: center;
 
-    bottom: -7px;
+}
 
-    background: var(--pink);
+
+.brand-title {
+
+    font-family:
+        "Pacifico",
+        cursive;
+
+    font-size: 45px;
+
+    color: #ef386d;
+
+    text-shadow:
+        0 4px 12px
+        rgba(239,56,109,.15);
+
+}
+
+
+.brand-note {
+
+    color: #ef386d;
+
+    font-size: 14px;
+
+    letter-spacing: 8px;
+
+    margin-top: -7px;
+
+}
+
+
+.menu-button,
+.music-button {
+
+    width: 48px;
+    height: 48px;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 23px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff477c,
+            #ef789e
+        );
+
+    box-shadow:
+        0 8px 20px
+        rgba(240,70,120,.25);
+
+}
+
+
+.music-button {
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff7e43,
+            #ffb02e
+        );
+
+}
+
+
+/* ======================================================
+   THEME NAV
+====================================================== */
+
+.theme-nav {
+
+    position: absolute;
+
+    top: 82px;
+
+    left: 50%;
+
+    transform: translateX(-50%);
+
+    z-index: 100;
+
+    display: flex;
+
+    gap: 45px;
+
+}
+
+
+.theme-link {
+
+    background: transparent;
+
+    font-size: 15px;
+
+    font-weight: 600;
+
+    color: #684b58;
+
+    padding: 8px 4px;
+
+    position: relative;
 
     transition: .3s;
 
 }
 
 
-.navbar nav a:hover::after {
+.theme-link::after {
+
+    content: "";
+
+    position: absolute;
+
+    left: 0;
+
+    bottom: 0;
+
+    width: 0;
+
+    height: 3px;
+
+    border-radius: 10px;
+
+    background: currentColor;
+
+    transition: .3s;
+
+}
+
+
+.theme-link.active::after {
 
     width: 100%;
 
 }
 
 
-.live-button {
+.theme-link.active {
 
-    border: none;
-
-    background: var(--purple);
-
-    color: white;
-
-    padding: 12px 22px;
-
-    border-radius: 30px;
-
-    cursor: pointer;
-
-    display: flex;
-
-    align-items: center;
-
-    gap: 8px;
+    color: var(--pink);
 
 }
 
 
-.live-dot {
+/* ======================================================
+   MAIN AREA
+====================================================== */
 
-    width: 8px;
+.theme-area {
 
-    height: 8px;
+    width: 100%;
+
+    height: 100%;
+
+    position: relative;
+
+}
+
+
+.theme {
+
+    position: absolute;
+
+    inset: 0;
+
+    opacity: 0;
+
+    visibility: hidden;
+
+    transform:
+        scale(1.03);
+
+    transition:
+        opacity .9s ease,
+        transform 1.2s ease;
+
+    overflow: hidden;
+
+}
+
+
+.theme.active {
+
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        scale(1);
+
+}
+
+
+/* ======================================================
+   ROMANTIC THEME
+====================================================== */
+
+.romantic {
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            rgba(255,255,255,.8),
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #ffd8e5,
+            #fff0f6 40%,
+            #ffc3d4
+        );
+
+}
+
+
+.romantic::before {
+
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        radial-gradient(
+            circle at 15% 30%,
+            #ff91ad 0 3px,
+            transparent 4px
+        ),
+
+        radial-gradient(
+            circle at 80% 20%,
+            #ff668d 0 3px,
+            transparent 4px
+        );
+
+    background-size:
+        80px 90px,
+        100px 110px;
+
+    opacity: .5;
+
+}
+
+
+.romantic-art {
+
+    position: absolute;
+
+    width: 470px;
+
+    height: 390px;
+
+    left: 50%;
+
+    bottom: 95px;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.moon {
+
+    position: absolute;
+
+    width: 90px;
+
+    height: 90px;
+
+    right: 30px;
+
+    top: 15px;
 
     border-radius: 50%;
 
-    background: #ff6d70;
+    background:
+        #fff4d5;
+
+    display: grid;
+
+    place-items: center;
+
+    color: #ff688f;
+
+    font-size: 35px;
 
     box-shadow:
-        0 0 0 5px rgba(255,109,112,.15);
-
-    animation: pulse 1.5s infinite;
+        0 0 45px
+        rgba(255,255,255,.8);
 
 }
 
 
-@keyframes pulse {
+.tree {
+
+    position: absolute;
+
+    left: 10px;
+
+    top: 20px;
+
+    font-size: 55px;
+
+    line-height: 1.3;
+
+    transform:
+        rotate(-10deg);
+
+}
+
+
+.couple {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 80px;
+
+    transform:
+        translateX(-50%);
+
+    display: flex;
+
+    align-items: flex-end;
+
+}
+
+
+.person {
+
+    font-size: 110px;
+
+    filter:
+        drop-shadow(
+            0 10px 10px
+            rgba(120,40,70,.15)
+        );
+
+}
+
+
+.person-two {
+
+    margin-left: -25px;
+
+}
+
+
+.heart {
+
+    position: absolute;
+
+    top: -45px;
+
+    left: 50%;
+
+    color: #ff477a;
+
+    font-size: 50px;
+
+    animation:
+        floatingHeart 2s ease-in-out infinite;
+
+}
+
+
+@keyframes floatingHeart {
 
     50% {
 
-        transform: scale(1.35);
-
-        opacity: .6;
+        transform:
+            translateY(-12px)
+            scale(1.1);
 
     }
 
 }
 
 
-/* =========================================================
-   HERO
-========================================================= */
+.flowers {
 
-.hero {
+    position: absolute;
 
-    max-width: 1250px;
+    bottom: 20px;
 
-    margin: auto;
-
-    min-height: 580px;
-
-    padding: 80px 5% 40px;
-
-    display: grid;
-
-    grid-template-columns:
-        48% 52%;
-
-    align-items: center;
-
-}
-
-
-.eyebrow {
-
-    color: var(--orange);
-
-    font-family:
-        "Noto Sans Devanagari",
-        sans-serif;
-
-    margin-bottom: 18px;
-
-}
-
-
-.hero h1 {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size:
-        clamp(55px,7vw,100px);
-
-    line-height: .89;
-
-    letter-spacing: -4px;
-
-    color: var(--purple);
-
-}
-
-
-.hero h1 span {
-
-    color: var(--pink);
-
-    font-style: italic;
-
-}
-
-
-.hero-content > p {
-
-    max-width: 510px;
-
-    font-size: 17px;
-
-    line-height: 1.7;
-
-    margin-top: 28px;
-
-    color: #664d61;
-
-}
-
-
-.hero-buttons {
-
-    display: flex;
-
-    gap: 14px;
-
-    margin-top: 30px;
-
-}
-
-
-.primary-button,
-.secondary-button {
-
-    padding: 14px 23px;
-
-    border-radius: 40px;
-
-    font-size: 14px;
-
-    cursor: pointer;
-
-    transition: .3s;
-
-}
-
-
-.primary-button {
-
-    border: none;
-
-    background:
-        linear-gradient(
-            100deg,
-            var(--purple),
-            #55216c
-        );
-
-    color: white;
-
-    box-shadow:
-        0 12px 25px rgba(41,16,57,.2);
-
-}
-
-
-.primary-button:hover {
+    left: 50%;
 
     transform:
-        translateY(-3px);
+        translateX(-50%);
+
+    font-size: 35px;
+
+    white-space: nowrap;
 
 }
 
 
-.secondary-button {
+/* ======================================================
+   SAFAR
+====================================================== */
 
-    border: 1px solid var(--orange);
+.safar {
 
-    color: var(--orange);
+    background:
+
+        linear-gradient(
+            180deg,
+            #b9e9ff 0%,
+            #dff7ff 42%,
+            #ffe7b2 100%
+        );
 
 }
 
 
-.secondary-button:hover {
+.safar-art {
 
-    background: var(--orange);
+    position: absolute;
 
-    color: white;
+    width: 620px;
 
-}
+    height: 390px;
 
+    left: 50%;
 
-/* =========================================================
-   HERO ART
-========================================================= */
+    bottom: 90px;
 
-.hero-art {
-
-    height: 480px;
-
-    position: relative;
+    transform:
+        translateX(-50%);
 
 }
 
@@ -459,403 +558,831 @@ button {
 
     position: absolute;
 
-    width: 380px;
+    top: 5px;
 
-    height: 380px;
-
-    border-radius: 50%;
-
-    right: 80px;
-
-    top: 10px;
-
-    background:
-        radial-gradient(
-            circle,
-            #ffd75b,
-            #ff8b45
-        );
-
-    box-shadow:
-        0 0 70px rgba(255,150,60,.25);
-
-}
-
-
-.mandala {
-
-    position: absolute;
-
-    right: 30px;
-
-    top: 20px;
-
-    font-size: 190px;
-
-    color: rgba(111,44,95,.15);
+    left: 50%;
 
     transform:
-        rotate(15deg);
+        translateX(-50%);
 
-}
+    font-size: 90px;
 
+    color: #ffb52e;
 
-.flower {
-
-    position: absolute;
-
-    color: var(--pink);
-
-    font-size: 75px;
-
-    z-index: 3;
-
-}
-
-
-.flower-one {
-
-    left: 100px;
-
-    top: 90px;
-
-    transform:
-        rotate(-20deg);
-
-}
-
-
-.flower-two {
-
-    right: 55px;
-
-    bottom: 140px;
-
-    color: #7d3d86;
-
-}
-
-
-/* =========================================================
-   RADIO
-========================================================= */
-
-.radio {
-
-    position: absolute;
-
-    z-index: 5;
-
-    width: 380px;
-
-    height: 280px;
-
-    left: 90px;
-
-    top: 120px;
-
-    padding: 25px;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            145deg,
-            #7c321f,
-            #32150e
-        );
-
-    border:
-        6px solid #3b160e;
-
-    transform:
-        rotate(-5deg);
-
-    box-shadow:
-        20px 30px 40px rgba(50,20,20,.25);
-
-}
-
-
-.radio-top {
-
-    display: flex;
-
-    justify-content: space-between;
-
-    color: #ffd27a;
-
-}
-
-
-.radio-brand {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    letter-spacing: 3px;
-
-}
-
-
-.radio-light {
-
-    width: 9px;
-
-    height: 9px;
-
-    border-radius: 50%;
-
-    background: #ff513f;
-
-    box-shadow:
-        0 0 15px #ff513f;
-
-}
-
-
-.radio-screen {
-
-    width: 120px;
-
-    margin: 20px auto;
-
-    padding: 8px;
-
-    text-align: center;
-
-    font-family: monospace;
-
-    color: #ffe69c;
-
-    background: #17100b;
-
-    border-radius: 5px;
-
-    font-size: 24px;
-
-}
-
-
-.radio-screen span {
-
-    font-size: 10px;
-
-}
-
-
-.radio-dials {
-
-    display: flex;
-
-    justify-content: center;
-
-    gap: 30px;
-
-}
-
-
-.radio-dials div {
-
-    width: 40px;
-
-    height: 40px;
-
-    border-radius: 50%;
-
-    background:
-        radial-gradient(
-            circle,
-            #ffdc86 15%,
-            #8b542e 18%,
-            #2b150d 65%
+    filter:
+        drop-shadow(
+            0 0 30px
+            #ffd45a
         );
 
 }
 
 
-.radio-speaker {
+.mountain {
 
     position: absolute;
 
-    bottom: 20px;
+    bottom: 110px;
 
-    left: 130px;
+    font-size: 160px;
 
-    display: flex;
-
-    gap: 7px;
+    color: #74b6bd;
 
 }
 
 
-.radio-speaker span {
+.mountain-one {
 
-    width: 4px;
-
-    height: 35px;
-
-    border-radius: 10px;
-
-    background: #8b5237;
+    left: 40px;
 
 }
 
 
-.music-lines {
+.mountain-two {
+
+    right: 40px;
+
+    color: #8ac5bb;
+
+}
+
+
+.road {
 
     position: absolute;
 
     bottom: 10px;
 
-    left: -20px;
+    left: 50%;
 
-    width: 580px;
+    transform:
+        translateX(-50%);
 
-    height: 110px;
+    font-size: 260px;
+
+    color: #8b7c6c;
+
+}
+
+
+.van {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 55px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 90px;
+
+    z-index: 4;
+
+    filter:
+        drop-shadow(
+            0 8px 7px
+            rgba(60,70,50,.2)
+        );
+
+}
+
+
+.signs {
+
+    position: absolute;
+
+    right: 20px;
+
+    top: 100px;
 
     display: flex;
 
-    align-items: flex-end;
+    flex-direction: column;
 
     gap: 5px;
 
-    z-index: 6;
-
 }
 
 
-.music-lines span {
+.signs span {
 
-    width: 4px;
-
-    height: 30px;
-
-    background:
-        linear-gradient(
-            #ff3e87,
-            #ffb52d
-        );
-
-    border-radius: 10px;
-
-    animation:
-        heroBars .8s infinite
-        alternate;
-
-}
-
-
-.music-lines span:nth-child(2) {
-    animation-delay: .2s;
-}
-
-.music-lines span:nth-child(3) {
-    animation-delay: .4s;
-}
-
-.music-lines span:nth-child(4) {
-    animation-delay: .1s;
-}
-
-.music-lines span:nth-child(5) {
-    animation-delay: .5s;
-}
-
-.music-lines span:nth-child(6) {
-    animation-delay: .3s;
-}
-
-
-@keyframes heroBars {
-
-    from {
-        height: 20px;
-    }
-
-    to {
-        height: 90px;
-    }
-
-}
-
-
-/* =========================================================
-   PLAYER
-========================================================= */
-
-.player-section {
-
-    max-width: 1200px;
-
-    margin:
-        -10px auto 70px;
-
-    padding: 0 5%;
-
-}
-
-
-.player {
-
-    min-height: 125px;
-
-    border-radius: 28px;
-
-    background:
-        linear-gradient(
-            120deg,
-            #291039,
-            #451752
-        );
+    padding: 7px 13px;
 
     color: white;
 
-    padding: 22px;
+    font-size: 11px;
+
+    font-weight: 700;
+
+    border-radius: 4px;
+
+    background: #ef8b32;
+
+    box-shadow:
+        3px 4px 0
+        rgba(100,70,30,.12);
+
+}
+
+
+.signs span:nth-child(2) {
+
+    background: #45a89b;
+
+}
+
+
+.signs span:nth-child(3) {
+
+    background: #e75f43;
+
+}
+
+
+.birds {
+
+    position: absolute;
+
+    top: 80px;
+
+    left: 60px;
+
+    color: #456f80;
+
+    font-size: 25px;
+
+}
+
+
+/* ======================================================
+   BHAGWANJI
+====================================================== */
+
+.bhagwanji {
+
+    background:
+
+        radial-gradient(
+            circle at 50% 40%,
+            #fffbdc,
+            transparent 40%
+        ),
+
+        linear-gradient(
+            135deg,
+            #fff1ad,
+            #fff9dc 50%,
+            #ffe1a2
+        );
+
+}
+
+
+.bhagwanji::before {
+
+    content: "✦  ✧  ॐ  ✦  ✧  ॐ  ✦  ✧";
+
+    position: absolute;
+
+    top: 140px;
+
+    width: 100%;
+
+    text-align: center;
+
+    color: #f2a52d;
+
+    font-size: 25px;
+
+    letter-spacing: 30px;
+
+    opacity: .55;
+
+}
+
+
+.god-art {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 88px;
+
+    transform:
+        translateX(-50%);
+
+    width: 700px;
+
+    height: 390px;
+
+}
+
+
+.temple {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 40px;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 190px;
+
+    opacity: .55;
+
+}
+
+
+.god {
+
+    position: absolute;
+
+    z-index: 4;
+
+    font-size: 85px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    line-height: .8;
+
+    filter:
+        drop-shadow(
+            0 8px 8px
+            rgba(160,100,20,.15)
+        );
+
+}
+
+
+.krishna {
+
+    left: 50px;
+
+    bottom: 70px;
+
+}
+
+
+.ganesha {
+
+    right: 40px;
+
+    bottom: 70px;
+
+}
+
+
+.hanuman {
+
+    left: 50%;
+
+    bottom: 30px;
+
+    transform:
+        translateX(-50%);
+
+}
+
+
+.diyas {
+
+    position: absolute;
+
+    bottom: 15px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    font-size: 35px;
+
+    white-space: nowrap;
+
+}
+
+
+/* ======================================================
+   THEME TITLE
+====================================================== */
+
+.theme-title {
+
+    position: absolute;
+
+    top: 130px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    text-align: center;
+
+    z-index: 20;
+
+}
+
+
+.theme-title h1 {
+
+    font-family:
+        "Pacifico",
+        cursive;
+
+    font-size: 64px;
+
+    font-weight: 400;
+
+}
+
+
+.romantic .theme-title h1 {
+
+    color: #ec4073;
+
+}
+
+
+.safar .theme-title h1 {
+
+    color: #1884c4;
+
+}
+
+
+.bhagwanji .theme-title h1 {
+
+    color: #ee7d16;
+
+}
+
+
+.theme-icon {
+
+    display: block;
+
+    font-size: 30px;
+
+    margin-bottom: 3px;
+
+}
+
+
+.romantic .theme-icon {
+
+    color: #f04c7b;
+
+}
+
+
+.safar .theme-icon {
+
+    color: #f7a725;
+
+}
+
+
+.bhagwanji .theme-icon {
+
+    color: #e99022;
+
+}
+
+
+.title-line {
+
+    font-size: 18px;
+
+    margin-top: 2px;
+
+    opacity: .7;
+
+}
+
+
+/* ======================================================
+   MUSIC STRINGS
+====================================================== */
+
+.music-strings {
+
+    position: absolute;
+
+    left: -5%;
+
+    width: 110%;
+
+    bottom: 155px;
+
+    height: 100px;
+
+    z-index: 10;
+
+    display: flex;
+
+    align-items: center;
+
+}
+
+
+.music-strings span {
+
+    position: absolute;
+
+    left: -5%;
+
+    width: 110%;
+
+    height: 3px;
+
+    border-radius: 50%;
+
+    animation:
+        stringFlow
+        4s ease-in-out infinite;
+
+}
+
+
+.music-strings span:nth-child(1) {
+
+    top: 20px;
+
+    transform:
+        rotate(2deg);
+
+}
+
+
+.music-strings span:nth-child(2) {
+
+    top: 35px;
+
+    transform:
+        rotate(-2deg);
+
+}
+
+
+.music-strings span:nth-child(3) {
+
+    top: 50px;
+
+    transform:
+        rotate(1deg);
+
+}
+
+
+.music-strings span:nth-child(4) {
+
+    top: 65px;
+
+    transform:
+        rotate(-1deg);
+
+}
+
+
+.music-strings span:nth-child(5) {
+
+    top: 80px;
+
+}
+
+
+.romantic-strings span {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ff8cab,
+            #fff,
+            #ff5e8b,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px #ff5d91,
+        0 0 25px #ff8bab;
+
+}
+
+
+.safar-strings span {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffbd39,
+            #fff4a8,
+            #ff9c2e,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px #ffbd39,
+        0 0 25px #ffd96b;
+
+}
+
+
+.bhagwanji-strings span {
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            #ffb62b,
+            #fff5a3,
+            #ff8d1c,
+            transparent
+        );
+
+    box-shadow:
+        0 0 12px #ffad21,
+        0 0 25px #ffd866;
+
+}
+
+
+@keyframes stringFlow {
+
+    0% {
+
+        transform:
+            translateX(-3%)
+            scaleY(.8);
+
+    }
+
+    50% {
+
+        transform:
+            translateX(3%)
+            scaleY(1.6);
+
+    }
+
+    100% {
+
+        transform:
+            translateX(-3%)
+            scaleY(.8);
+
+    }
+
+}
+
+
+/* ======================================================
+   GLITTER PARTICLES
+====================================================== */
+
+.particles span {
+
+    position: absolute;
+
+    z-index: 15;
+
+    color: white;
+
+    font-size: 18px;
+
+    animation:
+        sparkle 2s ease-in-out infinite;
+
+}
+
+
+.particles span:nth-child(1) {
+    left: 10%;
+    top: 25%;
+}
+
+.particles span:nth-child(2) {
+    left: 18%;
+    top: 55%;
+}
+
+.particles span:nth-child(3) {
+    left: 32%;
+    top: 30%;
+}
+
+.particles span:nth-child(4) {
+    left: 42%;
+    top: 48%;
+}
+
+.particles span:nth-child(5) {
+    left: 55%;
+    top: 25%;
+}
+
+.particles span:nth-child(6) {
+    left: 68%;
+    top: 45%;
+}
+
+.particles span:nth-child(7) {
+    left: 78%;
+    top: 28%;
+}
+
+.particles span:nth-child(8) {
+    left: 90%;
+    top: 55%;
+}
+
+.particles span:nth-child(9) {
+    left: 84%;
+    top: 70%;
+}
+
+.particles span:nth-child(10) {
+    left: 25%;
+    top: 75%;
+}
+
+
+@keyframes sparkle {
+
+    0%,
+    100% {
+
+        opacity: .2;
+
+        transform:
+            scale(.7)
+            rotate(0);
+
+    }
+
+    50% {
+
+        opacity: 1;
+
+        transform:
+            scale(1.5)
+            rotate(180deg);
+
+    }
+
+}
+
+
+/* ======================================================
+   PLAY BUTTON
+====================================================== */
+
+.big-play {
+
+    position: absolute;
+
+    left: 50%;
+
+    bottom: 125px;
+
+    transform:
+        translateX(-50%);
+
+    z-index: 30;
+
+    width: 68px;
+
+    height: 68px;
+
+    border-radius: 50%;
+
+    color: white;
+
+    font-size: 23px;
+
+    padding-left: 4px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff477c,
+            #ff9c42
+        );
+
+    border:
+        3px solid
+        rgba(255,255,255,.8);
+
+    box-shadow:
+        0 8px 30px
+        rgba(255,83,125,.35);
+
+    transition: .3s;
+
+}
+
+
+.big-play:hover {
+
+    transform:
+        translateX(-50%)
+        scale(1.1);
+
+}
+
+
+/* ======================================================
+   PLAYER
+====================================================== */
+
+.player {
+
+    position: absolute;
+
+    bottom: 20px;
+
+    left: 50%;
+
+    transform:
+        translateX(-50%);
+
+    width: min(1200px, 92%);
+
+    min-height: 80px;
+
+    z-index: 100;
+
+    border-radius: 25px;
+
+    padding: 10px 18px;
 
     display: grid;
 
     grid-template-columns:
-        75px 1fr 150px 280px;
-
-    gap: 20px;
+        55px 180px
+        45px 58px 45px
+        1fr 40px;
 
     align-items: center;
 
+    gap: 12px;
+
+    background:
+        rgba(255,255,255,.88);
+
+    backdrop-filter:
+        blur(15px);
+
+    border:
+        1px solid
+        rgba(255,255,255,.8);
+
     box-shadow:
-        0 25px 50px rgba(41,16,57,.25);
+        0 12px 35px
+        rgba(70,40,60,.15);
 
 }
 
 
-.album-art {
+.album {
 
-    width: 75px;
+    width: 52px;
 
-    height: 75px;
+    height: 52px;
 
-    border-radius: 14px;
-
-    background:
-        linear-gradient(
-            140deg,
-            #ff9d3f,
-            #ed397b
-        );
+    border-radius: 13px;
 
     display: grid;
 
     place-items: center;
 
+    background:
+        linear-gradient(
+            135deg,
+            #ff477d,
+            #ff9c39
+        );
+
 }
 
 
-.vinyl {
+.mini-vinyl {
 
-    width: 55px;
+    width: 39px;
 
-    height: 55px;
+    height: 39px;
 
     border-radius: 50%;
 
@@ -864,130 +1391,85 @@ button {
             circle,
             #171717 0,
             #171717 2px,
-            #282828 3px,
+            #444 3px,
             #111 4px
         );
+
+    color: #ff6b91;
 
     display: grid;
 
     place-items: center;
-
-}
-
-
-.vinyl-center {
-
-    width: 12px;
-
-    height: 12px;
-
-    border-radius: 50%;
-
-    background: var(--pink);
-
-}
-
-
-.playing-label {
-
-    color: #ff8c79;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-}
-
-
-.track-info h2 {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 22px;
-
-    margin-top: 4px;
-
-}
-
-
-.track-info p {
-
-    color: #cbb9d0;
 
     font-size: 12px;
 
 }
 
 
-.player-controls {
+.track {
 
     display: flex;
 
-    align-items: center;
-
-    justify-content: center;
-
-    gap: 15px;
+    flex-direction: column;
 
 }
 
 
-.player-controls button {
+.track strong {
 
-    background: none;
+    font-family:
+        "Playfair Display",
+        serif;
 
-    border: none;
+    font-size: 15px;
 
-    color: white;
+}
 
-    cursor: pointer;
+
+.track span {
+
+    color: #888;
+
+    font-size: 10px;
+
+    margin-top: 3px;
+
+}
+
+
+.player-control {
+
+    background: transparent;
+
+    color: #4b3c45;
+
+    font-size: 15px;
 
 }
 
 
 .main-play {
 
-    width: 55px;
+    width: 52px;
 
-    height: 55px;
+    height: 52px;
 
     border-radius: 50%;
 
     background:
         linear-gradient(
             135deg,
-            #ff6e83,
-            #ffb236
-        ) !important;
+            #ff477d,
+            #ff9d3c
+        );
 
     color: white;
 
     font-size: 17px;
 
-}
-
-
-.visualizer-container {
-
-    border-left:
-        1px solid rgba(255,255,255,.15);
-
-    padding-left: 20px;
-
-}
-
-
-.visualizer-label {
-
-    color: #ff8d7c;
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    margin-bottom: 8px;
+    box-shadow:
+        0 5px 15px
+        rgba(255,85,120,.3);
 
 }
 
@@ -996,881 +1478,207 @@ button {
 
     width: 100%;
 
-    height: 55px;
+    height: 50px;
 
 }
 
 
-/* =========================================================
-   SECTIONS
-========================================================= */
-
-.section {
-
-    max-width: 1200px;
-
-    margin: auto;
-
-    padding: 70px 5%;
-
-}
-
-
-.section-heading {
-
-    display: flex;
-
-    align-items: end;
-
-    justify-content: space-between;
-
-    margin-bottom: 35px;
-
-}
-
-
-.section-label {
-
-    color: var(--orange);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-    letter-spacing: 2px;
-
-    text-transform: uppercase;
-
-}
-
-
-.section-heading h2 {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    color: var(--purple);
-
-    font-size: 48px;
-
-    margin-top: 7px;
-
-}
-
-
-.section-heading > a {
-
-    color: var(--pink);
-
-    font-size: 13px;
-
-}
-
-
-/* =========================================================
-   SHOW CARDS
-========================================================= */
-
-.show-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(4,1fr);
-
-    gap: 18px;
-
-}
-
-
-.show-card {
-
-    min-height: 360px;
-
-    border-radius: 24px;
-
-    overflow: hidden;
-
-    color: white;
-
-    position: relative;
-
-    transition: .35s;
-
-}
-
-
-.show-card:hover {
-
-    transform:
-        translateY(-10px)
-        rotate(-1deg);
-
-}
-
-
-.show-image {
-
-    height: 175px;
-
-    display: grid;
-
-    place-items: center;
-
-    font-size: 70px;
-
-}
-
-
-.show-content {
-
-    height: 185px;
-
-    padding: 20px;
-
-}
-
-
-.show-content h3 {
-
-    font-family:
-        "Noto Sans Devanagari",
-        sans-serif;
-
-    font-size: 23px;
-
-}
-
-
-.show-content p {
-
-    font-size: 13px;
-
-    line-height: 1.5;
-
-    margin-top: 7px;
-
-    opacity: .9;
-
-}
-
-
-.show-content span {
-
-    display: inline-block;
-
-    border:
-        1px solid rgba(255,255,255,.5);
-
-    padding: 6px 10px;
-
-    border-radius: 20px;
-
-    font-size: 10px;
-
-    margin-top: 18px;
-
-}
-
-
-.morning {
-
-    background: #ee871a;
-
-}
-
-
-.morning .show-image {
-
-    background: #f9b944;
-
-}
-
-
-.nineties {
-
-    background: #d73769;
-
-}
-
-
-.nineties .show-image {
-
-    background: #ef6686;
-
-}
-
-
-.ghazal {
-
-    background: #35205c;
-
-}
-
-
-.ghazal .show-image {
-
-    background: #523278;
-
-}
-
-
-.night {
-
-    background: #102c55;
-
-}
-
-
-.night .show-image {
-
-    background: #1c4679;
-
-}
-
-
-/* =========================================================
-   SONGS
-========================================================= */
-
-.song-list {
-
-    display: flex;
-
-    flex-direction: column;
-
-    gap: 8px;
-
-}
-
-
-.song {
-
-    display: grid;
-
-    grid-template-columns:
-        45px 1fr 45px;
-
-    align-items: center;
-
-    padding: 16px;
-
-    border-radius: 15px;
-
-    transition: .25s;
-
-    cursor: pointer;
-
-}
-
-
-.song:hover {
-
-    background: white;
-
-    box-shadow:
-        0 8px 25px rgba(41,16,57,.07);
-
-}
-
-
-.song-number {
-
-    color: var(--pink);
-
-    font-size: 12px;
-
-    font-weight: 700;
-
-}
-
-
-.song-details {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.song-details strong {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 17px;
-
-}
-
-
-.song-details small {
-
-    color: var(--muted);
-
-    font-size: 11px;
-
-    margin-top: 3px;
-
-}
-
-
-.song button {
-
-    width: 34px;
-
-    height: 34px;
-
-    border-radius: 50%;
-
-    border: 1px solid #e8a1ae;
-
-    color: var(--pink);
+.volume {
 
     background: transparent;
 
-    cursor: pointer;
-
-}
-
-
-/* =========================================================
-   BLOG
-========================================================= */
-
-.blog-grid {
-
-    display: grid;
-
-    grid-template-columns:
-        repeat(3,1fr);
-
-    gap: 20px;
-
-}
-
-
-.blog-card {
-
-    background: white;
-
-    border-radius: 22px;
-
-    overflow: hidden;
-
-    transition: .3s;
-
-}
-
-
-.blog-card:hover {
-
-    transform:
-        translateY(-7px);
-
-}
-
-
-.blog-image {
-
-    height: 190px;
-
-    display: grid;
-
-    place-items: center;
-
-    font-size: 65px;
-
-}
-
-
-.blog-card:nth-child(1)
-.blog-image {
-
-    background: #d56b49;
-
-}
-
-
-.blog-card:nth-child(2)
-.blog-image {
-
-    background: #76508d;
-
-}
-
-
-.blog-card:nth-child(3)
-.blog-image {
-
-    background: #426a8d;
-
-}
-
-
-.blog-content {
-
-    padding: 22px;
-
-}
-
-
-.blog-content > span {
-
-    color: var(--orange);
-
-    font-size: 9px;
-
-    letter-spacing: 2px;
-
-    font-weight: 700;
-
-}
-
-
-.blog-content h3 {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 21px;
-
-    margin-top: 8px;
-
-}
-
-
-.blog-content p {
-
-    font-size: 12px;
-
-    color: var(--muted);
-
-    margin-top: 8px;
-
-}
-
-
-.blog-content small {
-
-    display: block;
-
-    margin-top: 18px;
-
-    color: #aa94a5;
-
-    font-size: 10px;
-
-}
-
-
-/* =========================================================
-   QUOTE
-========================================================= */
-
-.quote-section {
-
-    padding: 30px 5% 80px;
-
-}
-
-
-.quote {
-
-    max-width: 1200px;
-
-    min-height: 260px;
-
-    margin: auto;
-
-    border-radius: 35px;
-
-    padding: 45px;
-
-    position: relative;
-
-    overflow: hidden;
-
-    color: white;
-
-    background:
-        linear-gradient(
-            110deg,
-            #ed603e,
-            #8e3f83,
-            #49316f
-        );
-
-}
-
-
-.quote::before {
-
-    content: "";
-
-    position: absolute;
-
-    width: 500px;
-
-    height: 500px;
-
-    border-radius: 50%;
-
-    background:
-        rgba(255,190,80,.18);
-
-    right: -180px;
-
-    top: -250px;
-
-}
-
-
-.quote-mark {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 80px;
-
-    line-height: .5;
-
-    color: #ffd27d;
-
-}
-
-
-.quote h2 {
-
-    max-width: 650px;
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size:
-        clamp(30px,4vw,48px);
-
-    margin-top: 20px;
-
-}
-
-
-.quote > span {
-
-    color: #ff9b98;
-
-}
-
-
-/* =========================================================
-   ABOUT
-========================================================= */
-
-.about-section {
-
-    max-width: 1100px;
-
-    margin: auto;
-
-    padding: 70px 5% 100px;
-
-    display: grid;
-
-    grid-template-columns: 1fr 1fr;
-
-    gap: 80px;
-
-}
-
-
-.about-section h2 {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    color: var(--purple);
-
-    font-size: 55px;
-
-    line-height: 1;
-
-    margin-top: 10px;
-
-}
-
-
-.about-section > p {
-
     font-size: 17px;
 
-    line-height: 1.8;
-
-    color: var(--muted);
-
-    align-self: center;
-
 }
 
 
-/* =========================================================
-   FOOTER
-========================================================= */
-
-footer {
-
-    background: var(--purple);
-
-    color: white;
-
-    padding: 45px 5%;
-
-    display: flex;
-
-    justify-content: space-between;
-
-    align-items: center;
-
-    font-size: 12px;
-
-}
-
-
-.footer-logo {
-
-    display: flex;
-
-    flex-direction: column;
-
-}
-
-
-.footer-logo strong {
-
-    font-family:
-        "Playfair Display",
-        serif;
-
-    font-size: 28px;
-
-}
-
-
-.footer-logo span {
-
-    letter-spacing: 4px;
-
-    font-size: 9px;
-
-}
-
-
-.socials {
-
-    display: flex;
-
-    gap: 18px;
-
-    color: #e8cbe5;
-
-}
-
-
-/* =========================================================
+/* ======================================================
    MOBILE
-========================================================= */
+====================================================== */
 
-@media(max-width:900px) {
-
-    .navbar nav {
-
-        display: none;
-
-    }
+@media(max-width:800px) {
 
 
-    .hero {
+    .header {
 
-        grid-template-columns: 1fr;
-
-        padding-top: 50px;
+        padding: 12px 15px;
 
     }
 
 
-    .hero-art {
+    .brand-title {
 
-        height: 420px;
-
-    }
-
-
-    .show-grid {
-
-        grid-template-columns:
-            repeat(2,1fr);
+        font-size: 32px;
 
     }
 
 
-    .player {
+    .brand-note {
 
-        grid-template-columns:
-            65px 1fr;
-
-    }
-
-
-    .player-controls {
-
-        grid-column: 2;
-
-        justify-content: flex-start;
+        font-size: 9px;
 
     }
 
 
-    .visualizer-container {
+    .theme-nav {
 
-        grid-column:
-            1 / -1;
+        top: 72px;
 
-        border-left: none;
-
-        padding-left: 0;
+        gap: 22px;
 
     }
 
 
-    .blog-grid {
+    .theme-link {
 
-        grid-template-columns: 1fr;
-
-    }
-
-
-    .about-section {
-
-        grid-template-columns: 1fr;
-
-    }
-
-}
-
-
-@media(max-width:600px) {
-
-    .logo {
-
-        min-width: auto;
+        font-size: 12px;
 
     }
 
 
-    .logo-hindi {
+    .theme-title {
 
-        display: none;
-
-    }
-
-
-    .live-button {
-
-        padding: 10px 14px;
-
-        font-size: 11px;
+        top: 112px;
 
     }
 
 
-    .hero {
+    .theme-title h1 {
 
-        padding-left: 6%;
-
-        padding-right: 6%;
+        font-size: 46px;
 
     }
 
 
-    .hero h1 {
-
-        font-size: 58px;
-
-    }
-
-
-    .hero-art {
+    .romantic-art,
+    .safar-art,
+    .god-art {
 
         transform:
-            scale(.82);
+            translateX(-50%)
+            scale(.72);
 
         transform-origin:
-            top left;
+            center bottom;
 
-        height: 350px;
-
-    }
-
-
-    .show-grid {
-
-        grid-template-columns: 1fr;
+        bottom: 100px;
 
     }
 
 
-    .section-heading {
+    .music-strings {
 
-        align-items: flex-start;
-
-        gap: 15px;
-
-        flex-direction: column;
+        bottom: 145px;
 
     }
 
 
-    .section-heading h2 {
+    .big-play {
 
-        font-size: 40px;
+        bottom: 110px;
 
     }
 
 
     .player {
 
-        border-radius: 20px;
+        grid-template-columns:
+            45px 1fr
+            45px 50px 45px;
+
+        width: 96%;
+
+        min-height: 70px;
 
     }
 
 
-    .track-info h2 {
+    .album {
+
+        width: 42px;
+        height: 42px;
+
+    }
+
+
+    .mini-vinyl {
+
+        width: 31px;
+        height: 31px;
+
+    }
+
+
+    #visualizer {
+
+        display: none;
+
+    }
+
+
+    .volume {
+
+        display: none;
+
+    }
+
+
+}
+
+
+@media(max-width:480px) {
+
+
+    .brand-title {
+
+        font-size: 27px;
+
+    }
+
+
+    .menu-button,
+    .music-button {
+
+        width: 40px;
+        height: 40px;
 
         font-size: 18px;
 
     }
 
 
-    .about-section h2 {
+    .theme-nav {
 
-        font-size: 42px;
+        gap: 16px;
+
+    }
+
+
+    .romantic-art,
+    .safar-art,
+    .god-art {
+
+        transform:
+            translateX(-50%)
+            scale(.55);
+
+        bottom: 100px;
 
     }
 
 
-    footer {
+    .track strong {
 
-        flex-direction: column;
-
-        align-items: flex-start;
-
-        gap: 25px;
+        font-size: 12px;
 
     }
+
+
+    .track span {
+
+        font-size: 8px;
+
+    }
+
 
 }
