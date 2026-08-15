@@ -2,217 +2,204 @@
 <html lang="en">
 
 <head>
-
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0">
+    <title>Rang Radio</title>
 
-    <title>Rang Radio — Good Music. Old Soul.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
-    <meta name="description"
-          content="Rang Radio — timeless Hindi music, stories and nostalgia.">
-
-    <!-- Google Fonts -->
-
-    <link rel="preconnect"
-          href="https://fonts.googleapis.com">
-
-    <link rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossorigin>
-
-    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap"
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Pacifico&family=Playfair+Display:wght@500;600;700&display=swap"
           rel="stylesheet">
 
-    <link rel="stylesheet"
-          href="style.css">
-
+    <link rel="stylesheet" href="style.css">
 </head>
 
 
 <body>
 
+<div class="radio-app" id="radioApp">
 
-<!-- =====================================================
-     NAVIGATION
-===================================================== -->
 
-<header class="navbar">
+    <!-- ==========================================
+         TOP HEADER
+    =========================================== -->
 
-    <a href="#" class="logo">
+    <header class="header">
 
-        <div class="logo-name">
-            Rang
+        <button class="menu-button">
+            ☰
+        </button>
+
+
+        <div class="brand">
+
+            <div class="brand-title">
+                Rang Radio
+            </div>
+
+            <div class="brand-note">
+                ♫ 𝄞 ♡ 𝄞 ♫
+            </div>
+
         </div>
 
-        <div class="logo-sub">
-            RADIO
-        </div>
 
-        <div class="logo-hindi">
-            सुरों की एक प्यारी सी दुनिया
-        </div>
+        <button class="music-button">
+            ♫
+        </button>
 
-    </a>
+    </header>
 
 
-    <nav>
 
-        <a href="#home">Home</a>
+    <!-- ==========================================
+         THEME NAVIGATION
+    =========================================== -->
 
-        <a href="#shows">Shows</a>
+    <nav class="theme-nav">
 
-        <a href="#songs">Songs</a>
+        <button
+            class="theme-link active"
+            data-theme="romantic">
 
-        <a href="#blog">Blog</a>
+            Romantic
 
-        <a href="#about">About</a>
+        </button>
 
-        <a href="#contact">Contact</a>
+
+        <button
+            class="theme-link"
+            data-theme="safar">
+
+            Safar
+
+        </button>
+
+
+        <button
+            class="theme-link"
+            data-theme="bhagwanji">
+
+            Bhagwanji
+
+        </button>
 
     </nav>
 
 
-    <button class="live-button"
-            onclick="scrollToPlayer()">
 
-        <span class="live-dot"></span>
+    <!-- ==========================================
+         MAIN THEME AREA
+    =========================================== -->
 
-        Live Now
-
-    </button>
-
-</header>
+    <main class="theme-area">
 
 
+        <!-- Decorative clouds -->
 
-<!-- =====================================================
-     HERO
-===================================================== -->
-
-<main id="home">
-
-<section class="hero">
+        <div class="cloud cloud-one"></div>
+        <div class="cloud cloud-two"></div>
 
 
-    <div class="hero-content">
+        <!-- Floating particles -->
 
-        <div class="eyebrow">
+        <div class="particles">
 
-            ✦ पुराने गाने, नई यादें
-
-        </div>
-
-
-        <h1>
-
-            Good Music.
-            <br>
-
-            <span>Old Soul.</span>
-
-            <br>
-
-            Pure Feelings.
-
-        </h1>
-
-
-        <p>
-
-            A cosy corner of the internet playing
-            timeless Hindi melodies, 24/7.
-
-            Because some songs never get old.
-
-        </p>
-
-
-        <div class="hero-buttons">
-
-            <button class="primary-button"
-                    onclick="toggleMusic()">
-
-                <span id="heroPlayIcon">▶</span>
-
-                Listen Live
-
-            </button>
-
-
-            <a href="#shows"
-               class="secondary-button">
-
-                Explore Shows
-
-                <span>♡</span>
-
-            </a>
-
-        </div>
-
-    </div>
-
-
-
-    <!-- RADIO ART -->
-
-    <div class="hero-art">
-
-        <div class="sun"></div>
-
-        <div class="mandala">
-
-            ✺
+            <span>✦</span>
+            <span>✧</span>
+            <span>♡</span>
+            <span>✦</span>
+            <span>·</span>
+            <span>✧</span>
+            <span>♡</span>
+            <span>✦</span>
+            <span>✧</span>
+            <span>·</span>
 
         </div>
 
 
-        <div class="flower flower-one">
-            ✿
-        </div>
+        <!-- =====================================
+             ROMANTIC
+        ====================================== -->
 
-        <div class="flower flower-two">
-            ❀
-        </div>
+        <section
+            class="theme romantic active"
+            data-theme-section="romantic">
 
 
-        <div class="radio">
+            <div class="theme-decoration">
 
-            <div class="radio-top">
+                🌸
+                💕
 
-                <div class="radio-brand">
-                    RANG
+            </div>
+
+
+            <div class="theme-title">
+
+                <span class="theme-icon">
+                    ♡
+                </span>
+
+                <h1>
+                    Romantic
+                </h1>
+
+                <div class="title-line">
+                    〰 ♡ 〰
                 </div>
 
-                <div class="radio-light"></div>
+            </div>
+
+
+            <!-- Cartoon illustration -->
+
+            <div class="illustration romantic-art">
+
+                <div class="moon">
+                    ♥
+                </div>
+
+                <div class="tree">
+
+                    <span>🌸</span>
+                    <span>🌸</span>
+                    <span>🌸</span>
+
+                </div>
+
+
+                <div class="couple">
+
+                    <div class="person person-one">
+                        🧑🏻
+                    </div>
+
+                    <div class="person person-two">
+                        👩🏻
+                    </div>
+
+                    <div class="heart">
+                        ♥
+                    </div>
+
+                </div>
+
+
+                <div class="flowers">
+                    🌷 🌸 🌷 🌸 🌷
+                </div>
 
             </div>
 
 
-            <div class="radio-screen">
+            <!-- Music strings -->
 
-                88.7
+            <div class="music-strings romantic-strings">
 
-                <span>FM</span>
-
-            </div>
-
-
-            <div class="radio-dials">
-
-                <div></div>
-                <div></div>
-
-            </div>
-
-
-            <div class="radio-speaker">
-
-                <span></span>
-                <span></span>
-                <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
@@ -221,715 +208,302 @@
 
             </div>
 
-        </div>
 
-
-        <!-- Decorative music lines -->
-
-        <div class="music-lines">
-
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-            <span></span>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     MUSIC PLAYER
-===================================================== -->
-
-<section class="player-section"
-         id="player">
-
-    <div class="player">
-
-
-        <div class="album-art">
-
-            <div class="vinyl">
-
-                <div class="vinyl-center"></div>
-
-            </div>
-
-        </div>
-
-
-        <div class="track-info">
-
-            <div class="playing-label">
-
-                NOW PLAYING
-
-            </div>
-
-            <h2 id="songTitle">
-
-                Your Song
-
-            </h2>
-
-            <p id="songArtist">
-
-                Rang Radio • Live
-
-            </p>
-
-        </div>
-
-
-        <div class="player-controls">
-
-            <button onclick="previousSong()">
-                |◀
-            </button>
-
-
-            <button class="main-play"
-                    id="playButton"
-                    onclick="toggleMusic()">
+            <button
+                class="big-play"
+                onclick="toggleMusic()">
 
                 ▶
 
             </button>
 
-
-            <button onclick="nextSong()">
-                ▶|
-            </button>
-
-        </div>
-
-
-        <!-- LIVE VISUALIZER -->
-
-        <div class="visualizer-container">
-
-            <div class="visualizer-label">
-
-                LIVE STRINGS
-
-            </div>
-
-            <canvas id="visualizer"></canvas>
-
-        </div>
-
-    </div>
-
-
-    <!-- Audio -->
-
-    <audio id="audioPlayer"
-           crossorigin="anonymous">
-
-        <source src="audio/song.mp3"
-                type="audio/mpeg">
-
-    </audio>
-
-</section>
+        </section>
 
 
 
-<!-- =====================================================
-     SHOWS
-===================================================== -->
+        <!-- =====================================
+             SAFAR
+        ====================================== -->
 
-<section id="shows"
-         class="section">
-
-
-    <div class="section-heading">
-
-        <div>
-
-            <div class="section-label">
-                ✿ Featured Shows
-            </div>
-
-            <h2>
-                Pick your mood.
-            </h2>
-
-        </div>
+        <section
+            class="theme safar"
+            data-theme-section="safar">
 
 
-        <a href="#">
-            View All Shows →
-        </a>
+            <div class="theme-title">
 
-    </div>
-
-
-
-    <div class="show-grid">
-
-
-        <article class="show-card morning">
-
-            <div class="show-image">
-
-                ☕
-
-            </div>
-
-            <div class="show-content">
-
-                <h3>
-                    सुबह की चाय
-                </h3>
-
-                <p>
-                    Morning melodies to
-                    start your day.
-                </p>
-
-                <span>
-                    6AM — 10AM
+                <span class="theme-icon">
+                    ☀
                 </span>
 
-            </div>
+                <h1>
+                    Safar
+                </h1>
 
-        </article>
-
-
-
-        <article class="show-card nineties">
-
-            <div class="show-image">
-
-                📻
+                <div class="title-line">
+                    〰 ✦ 〰
+                </div>
 
             </div>
 
-            <div class="show-content">
 
-                <h3>
-                    90s Ke Deewane
-                </h3>
-
-                <p>
-                    The golden era of
-                    90s Hindi hits.
-                </p>
-
-                <span>
-                    10AM — 2PM
-                </span>
-
-            </div>
-
-        </article>
+            <div class="illustration safar-art">
 
 
-
-        <article class="show-card ghazal">
-
-            <div class="show-image">
-
-                🏮
-
-            </div>
-
-            <div class="show-content">
-
-                <h3>
-                    Shaam-E-Ghazal
-                </h3>
-
-                <p>
-                    Ghazals for your
-                    peaceful evenings.
-                </p>
-
-                <span>
-                    6PM — 9PM
-                </span>
-
-            </div>
-
-        </article>
+                <div class="sun">
+                    ☀
+                </div>
 
 
+                <div class="mountain mountain-one">
+                    ⛰
+                </div>
 
-        <article class="show-card night">
+                <div class="mountain mountain-two">
+                    ⛰
+                </div>
 
-            <div class="show-image">
 
-                🌙
+                <div class="road">
+                    ╱ ╲
+                </div>
+
+
+                <div class="van">
+                    🚐
+                </div>
+
+
+                <div class="signs">
+
+                    <span>
+                        Mountains
+                    </span>
+
+                    <span>
+                        Beach
+                    </span>
+
+                    <span>
+                        Adventure
+                    </span>
+
+                </div>
+
+
+                <div class="birds">
+                    𓅃 𓅃 𓅃
+                </div>
 
             </div>
 
-            <div class="show-content">
 
-                <h3>
-                    Raat Ke Nagme
-                </h3>
+            <div class="music-strings safar-strings">
 
-                <p>
-                    Slow songs for
-                    the late night souls.
-                </p>
-
-                <span>
-                    9PM — 1AM
-                </span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
 
             </div>
 
-        </article>
 
-    </div>
+            <button
+                class="big-play"
+                onclick="toggleMusic()">
 
-</section>
-
-
-
-<!-- =====================================================
-     SONGS
-===================================================== -->
-
-<section id="songs"
-         class="section songs-section">
-
-
-    <div class="section-heading">
-
-        <div>
-
-            <div class="section-label">
-                ♡ Top Picks
-            </div>
-
-            <h2>
-                Songs we love.
-            </h2>
-
-        </div>
-
-        <a href="#">
-            View Playlist →
-        </a>
-
-    </div>
-
-
-    <div class="song-list">
-
-
-        <div class="song"
-             onclick="playSong(
-             'Lag Ja Gale',
-             'Lata Mangeshkar'
-             )">
-
-            <div class="song-number">
-                01
-            </div>
-
-            <div class="song-details">
-
-                <strong>
-                    Lag Ja Gale
-                </strong>
-
-                <small>
-                    Lata Mangeshkar • Woh Kaun Thi?
-                </small>
-
-            </div>
-
-            <button>
                 ▶
+
             </button>
 
-        </div>
+        </section>
 
 
 
-        <div class="song"
-             onclick="playSong(
-             'Pehla Nasha',
-             'Udit Narayan & Sadhana Sargam'
-             )">
+        <!-- =====================================
+             BHAGWANJI
+        ====================================== -->
 
-            <div class="song-number">
-                02
-            </div>
-
-            <div class="song-details">
-
-                <strong>
-                    Pehla Nasha
-                </strong>
-
-                <small>
-                    Udit Narayan • Jo Jeeta Wohi Sikandar
-                </small>
-
-            </div>
-
-            <button>
-                ▶
-            </button>
-
-        </div>
+        <section
+            class="theme bhagwanji"
+            data-theme-section="bhagwanji">
 
 
+            <div class="theme-title">
 
-        <div class="song"
-             onclick="playSong(
-             'Chura Liya Hai Tumne',
-             'Asha Bhosle & Mohammed Rafi'
-             )">
-
-            <div class="song-number">
-                03
-            </div>
-
-            <div class="song-details">
-
-                <strong>
-                    Chura Liya Hai Tumne
-                </strong>
-
-                <small>
-                    Asha Bhosle & Mohammed Rafi
-                </small>
-
-            </div>
-
-            <button>
-                ▶
-            </button>
-
-        </div>
-
-
-
-        <div class="song"
-             onclick="playSong(
-             'Kabhi Kabhi Mere Dil Mein',
-             'Mukesh'
-             )">
-
-            <div class="song-number">
-                04
-            </div>
-
-            <div class="song-details">
-
-                <strong>
-                    Kabhi Kabhi Mere Dil Mein
-                </strong>
-
-                <small>
-                    Mukesh • Kabhi Kabhie
-                </small>
-
-            </div>
-
-            <button>
-                ▶
-            </button>
-
-        </div>
-
-
-
-        <div class="song"
-             onclick="playSong(
-             'Tujhe Dekha To',
-             'Kumar Sanu & Lata Mangeshkar'
-             )">
-
-            <div class="song-number">
-                05
-            </div>
-
-            <div class="song-details">
-
-                <strong>
-                    Tujhe Dekha To
-                </strong>
-
-                <small>
-                    Kumar Sanu & Lata Mangeshkar
-                </small>
-
-            </div>
-
-            <button>
-                ▶
-            </button>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-
-<!-- =====================================================
-     BLOG
-===================================================== -->
-
-<section id="blog"
-         class="section blog-section">
-
-
-    <div class="section-heading">
-
-        <div>
-
-            <div class="section-label">
-                ✦ Stories
-            </div>
-
-            <h2>
-                From the blog.
-            </h2>
-
-        </div>
-
-        <a href="#">
-            Read All →
-        </a>
-
-    </div>
-
-
-    <div class="blog-grid">
-
-
-        <article class="blog-card">
-
-            <div class="blog-image">
-                ♫
-            </div>
-
-            <div class="blog-content">
-
-                <span>
-                    MUSIC
+                <span class="theme-icon">
+                    ॐ
                 </span>
 
-                <h3>
-                    Why Old Hindi Songs
-                    Hit Different ❤️
-                </h3>
+                <h1>
+                    Bhagwanji
+                </h1>
 
-                <p>
-                    Some thoughts on nostalgia
-                    and timeless music.
-                </p>
-
-                <small>
-                    May 20, 2026
-                </small>
+                <div class="title-line">
+                    〰 ॐ 〰
+                </div>
 
             </div>
 
-        </article>
+
+            <div class="illustration god-art">
 
 
+                <div class="temple">
 
-        <article class="blog-card">
+                    🛕
 
-            <div class="blog-image">
-                🎙
-            </div>
-
-            <div class="blog-content">
-
-                <span>
-                    LEGENDS
-                </span>
-
-                <h3>
-                    R.D. Burman:
-                    The Heart Behind The Magic
-                </h3>
-
-                <p>
-                    Remembering one of India's
-                    greatest musical minds.
-                </p>
-
-                <small>
-                    May 12, 2026
-                </small>
-
-            </div>
-
-        </article>
+                </div>
 
 
+                <div class="god krishna">
 
-        <article class="blog-card">
+                    🦚
+                    🧒🏽
+                    🎵
 
-            <div class="blog-image">
-                ☔
-            </div>
+                </div>
 
-            <div class="blog-content">
 
-                <span>
-                    PLAYLIST
-                </span>
+                <div class="god ganesha">
 
-                <h3>
-                    Monsoon Playlist
-                    ☂️
-                </h3>
+                    🐘
+                    🧘
 
-                <p>
-                    Songs that make rain
-                    even more beautiful.
-                </p>
+                </div>
 
-                <small>
-                    May 05, 2026
-                </small>
+
+                <div class="god hanuman">
+
+                    🙏
+                    🐒
+
+                </div>
+
+
+                <div class="diyas">
+
+                    🪔 🪔 🪔 🪔 🪔
+
+                </div>
+
 
             </div>
 
-        </article>
 
-    </div>
+            <div class="music-strings bhagwanji-strings">
 
-</section>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+
+            </div>
+
+
+            <button
+                class="big-play"
+                onclick="toggleMusic()">
+
+                ▶
+
+            </button>
+
+        </section>
+
+    </main>
 
 
 
-<!-- =====================================================
-     QUOTE
-===================================================== -->
+    <!-- ==========================================
+         BOTTOM PLAYER
+    =========================================== -->
 
-<section class="quote-section">
+    <footer class="player">
 
-    <div class="quote">
 
-        <div class="quote-mark">
-            “
+        <div class="album">
+
+            <div class="mini-vinyl">
+
+                ●
+
+            </div>
+
         </div>
 
-        <h2>
-            Songs are the memories
-            we can always go back to.
-        </h2>
 
-        <span>
-            ♥
-        </span>
+        <div class="track">
 
-    </div>
+            <strong id="songTitle">
+                Tum Hi Ho
+            </strong>
 
-</section>
+            <span id="songArtist">
+                Romantic • Rang Radio
+            </span>
 
-
-
-<!-- =====================================================
-     ABOUT
-===================================================== -->
-
-<section id="about"
-         class="about-section">
-
-    <div>
-
-        <div class="section-label">
-            ✦ About Rang Radio
         </div>
 
-        <h2>
-            A little corner
-            for music lovers.
-        </h2>
 
-    </div>
+        <button
+            class="player-control"
+            onclick="previousSong()">
 
+            |◀
 
-    <p>
-
-        Rang Radio is a digital home for
-        Hindi music, stories and nostalgia.
-
-        <br><br>
-
-        Put your headphones on.
-        Stay for a while.
-
-    </p>
-
-</section>
+        </button>
 
 
+        <button
+            class="main-play"
+            id="playButton"
+            onclick="toggleMusic()">
 
-</main>
+            ▶
 
-
-
-<!-- =====================================================
-     FOOTER
-===================================================== -->
-
-<footer id="contact">
-
-    <div class="footer-logo">
-
-        <strong>
-            Rang
-        </strong>
-
-        <span>
-            RADIO
-        </span>
-
-    </div>
+        </button>
 
 
-    <div>
+        <button
+            class="player-control"
+            onclick="nextSong()">
 
-        Made with ♡ for music lovers.
+            ▶|
 
-        <br>
-
-        © 2026 Rang Radio
-
-    </div>
+        </button>
 
 
-    <div class="socials">
+        <!-- Visualizer -->
 
-        <a href="#">Instagram</a>
-
-        <a href="#">YouTube</a>
-
-        <a href="#">Spotify</a>
-
-    </div>
-
-</footer>
+        <canvas
+            id="visualizer">
+        </canvas>
 
 
+        <button class="volume">
+            🔊
+        </button>
 
-<!-- =====================================================
-     JAVASCRIPT
-===================================================== -->
+
+    </footer>
+
+
+</div>
+
+
+<!-- AUDIO -->
+
+<audio id="audioPlayer">
+
+    <source
+        src="audio/romantic-1.mp3"
+        type="audio/mpeg">
+
+</audio>
+
 
 <script src="script.js"></script>
 
